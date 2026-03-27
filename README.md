@@ -21,7 +21,7 @@ Reqnroll.Amp is a class library that boosts (amplifies) your test‑writing. [Re
 
 ## Getting Started
 
-The e2e tests in `test` are best suited to get started. The source code contains tests for all of the features listed above.
+The e2e tests under /tests/ are best suited to get started. The source code contains tests for all of the features listed above.
 
 | Test Project | Feature | Description |
 | -- | -- | -- |
