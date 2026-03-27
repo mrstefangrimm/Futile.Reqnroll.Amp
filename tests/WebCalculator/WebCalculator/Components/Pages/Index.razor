@@ -1,0 +1,66 @@
+﻿@page "/"
+
+@* @rendermode InteractiveServer *@
+
+<PageTitle>Futile Calculator</PageTitle>
+
+<h1>Futile Calculator</h1>
+
+<p>
+  <input autofocus id="first-number" @bind="firstValue" />
+  <input id="second-number" @bind="secondValue" />
+</p>
+
+<p>
+  <span>Result:</span>
+  <textarea readonly id="result" rows="1">@result</textarea>
+</p>
+
+<p>
+  <button id="add-button" @onclick="Add">Add</button>
+  <button id="subtract-button" @onclick="Subtract">Subtract</button>
+  <button id="multiply-button" @onclick="Multiply">Multiply</button>
+  <button id="divide-button" @onclick="Divide">Divide</button>
+  <button id="reset-button" @onclick="Clear">Clear</button>
+</p>
+
+@code {
+  private string? firstValue;
+  private string? secondValue;
+  private double result;
+
+  private void Add()
+  {
+    if (string.IsNullOrEmpty(firstValue) || string.IsNullOrEmpty(secondValue)) return;
+
+    result = int.Parse(firstValue) + int.Parse(secondValue);
+  }
+
+  private void Subtract()
+  {
+    if (string.IsNullOrEmpty(firstValue) || string.IsNullOrEmpty(secondValue)) return;
+  
+    result = int.Parse(firstValue) - int.Parse(secondValue);
+  }
+
+  private void Multiply()
+  {
+    if (string.IsNullOrEmpty(firstValue) || string.IsNullOrEmpty(secondValue)) return;
+
+    result = int.Parse(firstValue) * int.Parse(secondValue);
+  }
+
+  private void Divide()
+  {
+    if (string.IsNullOrEmpty(firstValue) || string.IsNullOrEmpty(secondValue)) return;
+ 
+    result = int.Parse(firstValue) * 1d / int.Parse(secondValue);
+  }
+
+  private void Clear()
+  {
+    result = 0;
+    firstValue = null;
+    secondValue = null;
+  }
+}

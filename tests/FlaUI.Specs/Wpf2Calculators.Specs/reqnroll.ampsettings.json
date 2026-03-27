@@ -1,0 +1,19 @@
+{
+  "flaui": {
+    "settings": {
+      "uia": "UIA2"
+    },
+    "profiles": {
+      "Calculator One": {
+        "app": "..\\..\\..\\..\\..\\WpfCalculator\\WpfCalculator\\bin\\Debug\\net10.0-windows\\WpfCalculator.exe",
+        "launch": "Exe",
+        "arguments": "Hello One"
+      },
+      "Calculator Two": {
+        "app": "..\\..\\..\\..\\..\\WpfCalculator\\WpfCalculator\\bin\\Debug\\net10.0-windows\\WpfCalculator.exe",
+        "launch": "Exe",
+        "arguments": "Hello Two"
+      }
+    }
+  }
+}

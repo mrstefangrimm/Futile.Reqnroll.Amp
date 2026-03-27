@@ -1,0 +1,26 @@
+{
+  "playwright": {
+    "profiles": {
+      "Futile Calculator": {
+        "url": "https://futile-calculator.netlify.app/"
+      },
+      "Futile Calculator headless": {
+        "url": "https://futile-calculator.netlify.app/",
+        "headless": true
+      },
+      "Futile Calculator slowmo": {
+        "url": "https://futile-calculator.netlify.app/",
+        "slowMo": 1000
+      },
+      "Futile Calculator slowmo local url": {
+        "url": " https://localhost:5001",
+        "headless": false,
+        "slowMo": 1000
+      },
+      "Futile Calculator installed chrome": {
+        "url": "https://futile-calculator.netlify.app/",
+        "chromeExecutablePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+      }
+    }
+  }
+}

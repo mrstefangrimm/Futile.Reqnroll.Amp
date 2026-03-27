@@ -1,0 +1,27 @@
+{
+  "flaui": {
+    "settings": {
+      "uia": "UIA2"
+    },
+    "profiles": {
+      "WPF Calculator": {
+        "app": "..\\..\\..\\..\\WpfCalculator\\WpfCalculator.exe",
+        "launch": "Exe"
+      },
+      "Windows Calculator": {
+        "app": "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App",
+        "launch": "StoreApp"
+      }
+    }
+  },
+  "playwright": {
+    "profiles": {
+      "Futile-Calculator": {
+        "url": "https://futile-calculator.netlify.app/"
+      },
+      "WebCalculator": {
+        "url": "https://webcalculator.netlify.app/"
+      }
+    }
+  }
+}

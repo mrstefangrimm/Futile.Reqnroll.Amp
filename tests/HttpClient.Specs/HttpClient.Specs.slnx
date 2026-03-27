@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="WebCalculatorApi.Specs/WebCalculatorApi.Specs.csproj" />
+  <Project Path="../WebCalculatorApi/WebCalculatorApi.csproj" />
+  <Project Path="../../src/Reqnroll.Amp/Reqnroll.Amp.csproj" />
+</Solution>

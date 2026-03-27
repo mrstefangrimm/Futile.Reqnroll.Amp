@@ -1,0 +1,12 @@
+@WebCalculatorApi_HostAddress = http://localhost:5222
+
+POST {{WebCalculatorApi_HostAddress}}/api/calculation/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "firstNumber": 1,
+  "secondNumber": 2,
+  "mathOperation": "Divide"
+}
+###

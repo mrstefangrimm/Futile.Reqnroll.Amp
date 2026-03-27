@@ -1,0 +1,9 @@
+{
+  "webapi": {
+    "profiles": {
+      "Calculator": {
+        "url": "http://localhost:5222/api/calculation"
+      }
+    }
+  }
+}

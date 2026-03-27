@@ -1,0 +1,28 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="LICENSE" />
+    <File Path="Readme.md" />
+    <File Path="Build-AmpArtifiacts.ps1" />
+    <File Path="Build-AmpArtifiacts.sh" />
+    <File Path="Build-AmpArtifiacts-windows.ps1" />
+    <File Path="Build-AmpArtifiacts-windows.sh" />
+  </Folder>
+  <Folder Name="/Reqnroll.Amp/">
+    <Project Path="src/Reqnroll.Amp/Reqnroll.Amp.csproj" />
+    <Project Path="src/Reqnroll.Amp-windows/Reqnroll.Amp-windows.csproj" />
+  </Folder>
+  <Folder Name="/tests/" />
+  <Folder Name="/tests/Specs/">
+    <Project Path="tests/FlaUI.Specs/WpfCalculator.Specs/WpfCalculator.Specs.csproj" />
+    <Project Path="tests/FlaUI.Specs/Wpf2Calculators.Specs/Wpf2Calculators.Specs.csproj" />
+    <Project Path="tests/FlaUI.Specs/WindowsCalculator.Specs/WindowsCalculator.Specs.csproj" />
+    <Project Path="tests/PlayWright.Specs/WebCalculator.Specs/WebCalculator.Specs.csproj" />
+    <Project Path="tests/HttpClient.Specs/WebCalculatorApi.Specs/WebCalculatorApi.Specs.csproj" />
+  </Folder>
+  <Folder Name="/tests/SUT/">
+    <Project Path="tests/WpfCalculator/WpfCalculator/WpfCalculator.csproj" />
+    <Project Path="tests/WebCalculator/WebCalculator/WebCalculator.csproj" />
+    <Project Path="tests/WebCalculatorApi/WebCalculatorApi.csproj" />
+ </Folder>
+</Solution>
