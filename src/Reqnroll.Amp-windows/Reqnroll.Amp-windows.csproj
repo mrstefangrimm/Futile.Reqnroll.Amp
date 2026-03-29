@@ -4,6 +4,8 @@
         <TargetFramework>net10.0-windows</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <IsPackable>true</IsPackable>
+        <GenerateErrorForMissingTargetingPacks>false</GenerateErrorForMissingTargetingPacks>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -16,7 +18,6 @@
         <RepositoryUrl>https://github.com/mrstefangrimm/Futile.Reqnroll.Amp/</RepositoryUrl>
         <Version>0.0.0</Version>
         <Company />
-        <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>

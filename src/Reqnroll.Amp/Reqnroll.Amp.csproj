@@ -4,6 +4,7 @@
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -16,7 +17,6 @@
         <RepositoryUrl>https://github.com/mrstefangrimm/Futile.Reqnroll.Amp/</RepositoryUrl>
         <Version>0.0.0</Version>
         <Company />
-        <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>

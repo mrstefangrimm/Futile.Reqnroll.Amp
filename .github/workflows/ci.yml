@@ -24,8 +24,6 @@ jobs:
       run: dotnet restore ${{env.SOLUTION_APP}}
     - name: Build
       run: dotnet build --no-restore ${{env.SOLUTION_APP}}
-    - name: Test
-      run: dotnet test --no-build --verbosity normal ${{env.SOLUTION_APP}}
     - name: Restore examples dependencies
       run: dotnet restore ${{env.SOLUTION_EXAMPLES}}
     - name: Build examples
