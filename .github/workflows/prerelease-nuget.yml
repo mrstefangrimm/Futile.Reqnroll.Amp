@@ -1,0 +1,36 @@
+name: Pack Preview
+
+on:
+  push:
+    paths:
+      - "src/**"
+      - ".github/workflows/prerelease-nuget.yml"
+    branches: [ "prerelease/[0-9]+.[0-9]+.[0-9]+" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 10.0.x
+    - name: Set VERSION variable from tag
+      run: |
+        echo "VERSION=${GITHUB_REF_NAME/prerelease\/}-prerelease.${{github.run_number}}" >> $GITHUB_ENV
+        echo "${VERSION}"
+    - name: Pack Reqnroll.Amp
+      run: |
+        dotnet restore src/Reqnroll.Amp/Reqnroll.Amp.csproj
+        dotnet pack --configuration Release src/Reqnroll.Amp/Reqnroll.Amp.csproj -p:Version=${VERSION} --output .
+    - name: Pack Reqnroll.Amp-windows
+      run: |
+        dotnet restore src/Reqnroll.Amp-windows/Reqnroll.Amp-windows.csproj
+        dotnet pack --configuration Release src/Reqnroll.Amp-windows/Reqnroll.Amp-windows.csproj -p:Version=${VERSION} --output .
+    - name: Push Reqnroll.Amp
+      run: dotnet nuget push Reqnroll.Amp.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.PUSH_NUGET }}
+    - name: Push Reqnroll.Amp-windows
+      run: dotnet nuget push Reqnroll.Amp-windows.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.PUSH_NUGET }}
