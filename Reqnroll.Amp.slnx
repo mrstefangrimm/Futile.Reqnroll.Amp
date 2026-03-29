@@ -8,6 +8,11 @@
     <File Path="Build-AmpArtifiacts-windows.ps1" />
     <File Path="Build-AmpArtifiacts-windows.sh" />
   </Folder>
+  <Folder Name="/Solution Items/github-workflows/">
+    <File Path=".github/workflows/ci.yml" />
+    <File Path=".github/workflows/release-nuget.yml" />
+    <File Path=".github/workflows/prerelease-nuget.yml" />
+  </Folder>
   <Folder Name="/Reqnroll.Amp/">
     <Project Path="src/Reqnroll.Amp/Reqnroll.Amp.csproj" />
     <Project Path="src/Reqnroll.Amp-windows/Reqnroll.Amp-windows.csproj" />
