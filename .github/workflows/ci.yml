@@ -7,7 +7,7 @@ on:
 
 env:
   SOLUTION_APP: Reqnroll.Amp.slnx
-  SOLUTION_EXAMPLES: examples/CalculatorComparison/CalculatorComparison.Specs.sln
+  SOLUTION_EXAMPLES: examples/CalculatorComparison/CalculatorComparison.Specs.slnx
 
 jobs:
   build:
