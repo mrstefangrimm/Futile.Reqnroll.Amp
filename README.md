@@ -1,3 +1,5 @@
+[![CI](https://github.com/mrstefangrimm/Futile.Reqnroll.Amp/actions/workflows/ci.yml/badge.svg)](https://github.com/mrstefangrimm/Futile.Reqnroll.Amp/actions/workflows/ci.yml)
+
 <table border="0">
   <tr>
     <td><img src="res/rnramp-logo.png" width="80"></td>
@@ -74,4 +76,4 @@ Two features are unique:
 
 
 
-If you want to work offline (air gapped), you may like the "Build-AmpArtifiacts" resp. "Build-AmpArtifiacts-windows" scripts. These scripts get all the package dependencies and compress the nuget packages into an archive (zip on Windows, tar.gz on Linux)
+If you want to work offline (air-gapped), you may like the "Build-AmpArtifacts" resp. "Build-AmpArtifacts-windows" scripts. These scripts get all the package dependencies and compress the nuget packages into an archive (zip on Windows, tar.gz on Linux)
