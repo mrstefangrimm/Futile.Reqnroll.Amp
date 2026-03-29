@@ -4,6 +4,8 @@
         <TargetFramework>net10.0-windows</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <IsPackable>true</IsPackable>
+        <GenerateErrorForMissingTargetingPacks>false</GenerateErrorForMissingTargetingPacks>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -12,9 +14,9 @@
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <Description>Additional classes for reqnroll.</Description>
-        <PackageProjectUrl>https://github.com/mrstefangrimm/</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/mrstefangrimm/</RepositoryUrl>
-        <Version>0.0.1-prerelease22</Version>
+        <PackageProjectUrl>https://github.com/mrstefangrimm/Futile.Reqnroll.Amp/blob/main/README.md</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/mrstefangrimm/Futile.Reqnroll.Amp/</RepositoryUrl>
+        <Version>0.0.0</Version>
         <Company />
     </PropertyGroup>
 

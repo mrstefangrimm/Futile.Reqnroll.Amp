@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  - push
+  - pull_request
+  - workflow_dispatch
+
+env:
+  SOLUTION_APP: Reqnroll.Amp.slnx
+  SOLUTION_EXAMPLES: examples/CalculatorComparison/CalculatorComparison.Specs.slnx
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 10.0.x
+    - name: Restore dependencies
+      run: dotnet restore ${{env.SOLUTION_APP}}
+    - name: Build
+      run: dotnet build --no-restore ${{env.SOLUTION_APP}}
+    - name: Restore examples dependencies
+      run: dotnet restore ${{env.SOLUTION_EXAMPLES}}
+    - name: Build examples
+      run: dotnet build --no-restore ${{env.SOLUTION_EXAMPLES}}

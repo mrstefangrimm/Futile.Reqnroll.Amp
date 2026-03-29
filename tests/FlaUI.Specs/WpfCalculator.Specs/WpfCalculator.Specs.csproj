@@ -5,6 +5,8 @@
         <Nullable>disable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <OutputType>Exe</OutputType>
+        <IsPackable>false</IsPackable>
+        <GenerateErrorForMissingTargetingPacks>false</GenerateErrorForMissingTargetingPacks>
     </PropertyGroup>
 
     <ItemGroup>
