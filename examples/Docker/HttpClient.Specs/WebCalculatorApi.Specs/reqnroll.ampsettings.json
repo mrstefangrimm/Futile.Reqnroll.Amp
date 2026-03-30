@@ -1,0 +1,9 @@
+{
+  "webapi": {
+    "profiles": {
+      "Calculator API": {
+        "url": "http://webcalculatorapi:8080/api/calculation"
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
-Feature: HttpClient with ASP.NET TestHost
-The calculator Web API is tested by starting a TestHost and registering a IDriverInstanceFactory
+Feature: HttpClient with in Docker
+The calculator Web API is tested in a docker container, the URL is in the profile
 
 Scenario: Add two numbers
     Given the first number is 50

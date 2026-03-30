@@ -1,5 +1,5 @@
-Feature: HttpClient with ASP.NET TestHost
-The calculator Web API is tested by starting a TestHost and registering a IDriverInstanceFactory
+Feature: PlayWright Minimal
+The futile calculator opens and mathematical operation are correct
 
 Scenario: Add two numbers
     Given the first number is 50

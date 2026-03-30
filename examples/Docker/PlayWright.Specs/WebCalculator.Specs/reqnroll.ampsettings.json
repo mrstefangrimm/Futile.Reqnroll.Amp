@@ -1,0 +1,10 @@
+{
+  "playwright": {
+    "profiles": {
+      "Futile Calculator headless": {
+        "url": "http://webcalculator:80/",
+        "headless": true
+      }
+    }
+  }
+}
