@@ -2,7 +2,7 @@
 
 ![Reqnroll.Amp](res/rnramp-banner.png)
 
-Reqnroll.Amp is a class library that boosts (amplifies) your test‑writing. [Reqnroll](https://reqnroll.net/) is BDD testing environment for C#. Reqnroll.Amp is a tiny class library on top of Reqnroll.
+Reqnroll.Amp is a class library that boosts (amplifies) your test‑writing. [Reqnroll](https://reqnroll.net/) is [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development) testing environment for C#. Reqnroll.Amp is a tiny class library on top of Reqnroll.
 
 
 
