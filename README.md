@@ -1,11 +1,6 @@
 [![CI](https://github.com/mrstefangrimm/Futile.Reqnroll.Amp/actions/workflows/ci.yml/badge.svg)](https://github.com/mrstefangrimm/Futile.Reqnroll.Amp/actions/workflows/ci.yml)
 
-<table border="0">
-  <tr>
-    <td><img src="res/rnramp-logo.png" width="80"></td>
-    <td><h1>Reqnroll.Amp</h1></td>
-  </tr>
-</table>
+![Reqnroll.Amp](res/rnramp-banner.png)
 
 Reqnroll.Amp is a class library that boosts (amplifies) your test‑writing. [Reqnroll](https://reqnroll.net/) is BDD testing environment for C#. Reqnroll.Amp is a tiny class library on top of Reqnroll.
 
