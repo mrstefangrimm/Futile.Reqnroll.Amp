@@ -22,5 +22,8 @@ public static class TestStartup
         builder.RegisterType<CalculatorMainWindow>().AsSelf().InstancePerDependency();
         builder.RegisterType<CalculatorService>().As<ICalculatorService>().InstancePerLifetimeScope();
         builder.RegisterType<FlaUIDriver>().AsSelf().InstancePerLifetimeScope();
+
+        builder.RegisterType<ScreenCaptureHook>().AsSelf().InstancePerLifetimeScope();
+        builder.RegisterScreenCapturer();
     }
 }
