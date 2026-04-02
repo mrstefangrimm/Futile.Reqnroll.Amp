@@ -23,7 +23,7 @@ public static class TestStartup
         builder.RegisterType<CalculatorService>().As<ICalculatorService>().InstancePerLifetimeScope();
         builder.RegisterType<FlaUIDriver>().AsSelf().InstancePerLifetimeScope();
 
-        builder.RegisterType<ScreenCaptureHook>().AsSelf().InstancePerLifetimeScope();
+        //builder.RegisterType<ScreenCaptureHook>().AsSelf().InstancePerLifetimeScope();
         builder.RegisterScreenCapturer();
     }
 }

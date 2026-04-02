@@ -9,7 +9,7 @@ public static class ContainerBuilderExtensionWindows
         public void RegisterScreenCapturer()
         {
             builder.RegisterType<ScreenCapturer>().As<IScreenCapturer>();
-            //builder.RegisterType<ScreenCaptureHook>().AsSelf().InstancePerLifetimeScope();
+            builder.RegisterType<ScreenCaptureHook>().AsSelf().InstancePerLifetimeScope();
         }
     }
 }

@@ -2,6 +2,11 @@
   "reqnroll": {
     "coloredOutput": false,
     "traceSuccessfulSteps": true,
-    "featureLanguage":  "en"
-  }
+    "featureLanguage": "en"
+  },
+  "bindingAssemblies": [
+    {
+      "assembly": "Reqnroll.Amp-windows"
+    }
+  ]
 }

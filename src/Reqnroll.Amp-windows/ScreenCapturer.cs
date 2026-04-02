@@ -40,6 +40,24 @@ public class ScreenCapturer : IScreenCapturer
         }
     }
 
+    public void TakeScreenshot(FeatureContext featureContext, ScenarioContext scenarioContext)
+    {
+        if (_takeScreenShots)
+        {
+            if (scenarioContext.ScenarioExecutionStatus == ScenarioExecutionStatus.TestError)
+            {
+                var img = Capture.Screen();
+                img.ApplyOverlays(new MouseOverlay(img));
+
+                Directory.CreateDirectory(_outputPath!);
+                string filename = $"{CurrentDateTime} {featureContext.FeatureInfo.Title} {scenarioContext.ScenarioInfo.Title} {scenarioContext.ScenarioExecutionStatus}.png";
+                img.ToFile(Path.Combine(_outputPath!, filename));
+            }
+        }
+    }
+
+    public bool IsRecording => _recording;
+
     public void StartRecording()
     {
         if (_takeRecording)
@@ -80,22 +98,6 @@ public class ScreenCapturer : IScreenCapturer
             else
             {
                 File.Delete(_ffmpegTempFile!);
-            }
-        }
-    }
-
-    public void TakeScreenshot(FeatureContext featureContext, ScenarioContext scenarioContext)
-    {
-        if (_takeScreenShots)
-        {
-            if (scenarioContext.ScenarioExecutionStatus == ScenarioExecutionStatus.TestError)
-            {
-                var img = Capture.Screen();
-                img.ApplyOverlays(new MouseOverlay(img));
-
-                Directory.CreateDirectory(_outputPath!);
-                string filename = $"{CurrentDateTime} {featureContext.FeatureInfo.Title} {scenarioContext.ScenarioInfo.Title} {scenarioContext.ScenarioExecutionStatus}.png";
-                img.ToFile(Path.Combine(_outputPath!, filename));
             }
         }
     }
