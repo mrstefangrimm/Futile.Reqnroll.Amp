@@ -47,7 +47,7 @@ public class FlaUIDriverBase : AmpDriver<Window>, IDisposable
         };
 
         var profiles = flaUi.Profiles;
-        if (profiles == null || !profiles.Any()) { throw new InvalidOperationException("No FlaUI profile defined"); }
+        if (profiles == null || !profiles.Any()) { throw new InvalidOperationException("No FlaUI profile defined."); }
 
         if (_launchProfileName == null)
         {

@@ -4,7 +4,7 @@
       "uia": "UIA2",
       "capturing": {
         "type": "Screenshot",
-        "outputpath": "C:\\Temp\\Capture"
+        "outputpath": "report"
       }
     },
     "profiles": {

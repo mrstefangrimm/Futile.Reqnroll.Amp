@@ -9,6 +9,33 @@ public class HttpClientDriverBase : AmpDriver<HttpClient>, IDisposable
 
     public HttpClientDriverBase(IOptions<AmpSettings> appSettings, IDriverInstanceFactory<HttpClient>? instanceFactory) : base(appSettings, instanceFactory) { }
 
+    ~HttpClientDriverBase()
+    {
+        Dispose(false);
+    }
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (_disposed || !disposing)
+        {
+            return;
+        }
+
+        if (_instance != null)
+        {
+            _instance.Dispose();
+            _instance = null;
+        }
+
+        _disposed = true;
+    }
+
     protected override HttpClient LaunchProfile()
     {
         if (_instanceFactory != null)
@@ -19,7 +46,7 @@ public class HttpClientDriverBase : AmpDriver<HttpClient>, IDisposable
         var apiSettings = _appSettings.Value.WebApi;
 
         var profiles = apiSettings.Profiles;
-        if (profiles == null || !profiles.Any()) { throw new InvalidOperationException("No FlaUI profile defined"); }
+        if (profiles == null || !profiles.Any()) { throw new InvalidOperationException("No FlaUI profile defined."); }
 
         if (_launchProfileName == null)
         {
@@ -36,22 +63,6 @@ public class HttpClientDriverBase : AmpDriver<HttpClient>, IDisposable
         };
 
         return _instance;
-    }
-
-    public void Dispose()
-    {
-        if (_disposed)
-        {
-            return;
-        }
-
-        if (_instance != null)
-        {
-            _instance.Dispose();
-            _instance = null;
-        }
-
-        _disposed = true;
     }
 }
 

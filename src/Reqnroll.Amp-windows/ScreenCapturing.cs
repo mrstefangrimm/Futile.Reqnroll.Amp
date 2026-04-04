@@ -3,7 +3,16 @@ using Microsoft.Extensions.Options;
 
 namespace Reqnroll.Amp;
 
-public class ScreenCapturer : IScreenCapturer
+public interface IScreenCapturing : IDisposable
+{
+    void TakeScreenshot(FeatureContext featureContext, ScenarioContext scenarioContext);
+
+    bool IsRecording { get; }
+    void StartRecording();
+    void StopRecording(FeatureContext featureContext, ScenarioContext scenarioContext);
+}
+
+public class ScreenCapturing : IScreenCapturing
 {
     private readonly bool _takeScreenShots;
     private readonly bool _takeRecording;
@@ -12,47 +21,57 @@ public class ScreenCapturer : IScreenCapturer
     private readonly string? _ffmpegTempFile;
     private readonly string CurrentDateTime = DateTime.Now.ToString("yyyy-MM-dd_Hmmss");
 
-    private bool _isDisposed;
+    private bool _disposed;
     private bool _recording;
     private VideoRecorder? _videoRecorder;
 
-    public ScreenCapturer(IOptions<AmpSettings> configuration/*, ITestRunContext testRunContext*/)
+    public ScreenCapturing(IOptions<AmpSettings> configuration)
     {
         if (configuration.Value.FlaUi.Settings.Capturing == null) return;
 
-        _takeScreenShots = configuration.Value.FlaUi.Settings.Capturing!.Type == CapturingType.Screenshot;
-        _takeRecording = configuration.Value.FlaUi.Settings.Capturing!.Type == CapturingType.Recording;
+        _takeScreenShots = configuration.Value.FlaUi.Settings.Capturing.Type == CapturingType.Screenshot;
+        _takeRecording = configuration.Value.FlaUi.Settings.Capturing.Type == CapturingType.Recording;
 
-        _outputPath = configuration.Value.FlaUi.Settings.Capturing!.OutputPath != null
-            ? configuration.Value.FlaUi.Settings.Capturing!.OutputPath
-            : throw new Exception(); // Path.Combine(testRunContext.TestDirectory, "Capture");
+        _outputPath = configuration.Value.FlaUi.Settings.Capturing.OutputPath != null
+            ? configuration.Value.FlaUi.Settings.Capturing.OutputPath
+            : throw new InvalidOperationException($"Invalid or misssing FlaUI screen capturing output path.");
 
-        _ffmpegExecutable = _takeRecording ? configuration.Value.FlaUi.Settings.Capturing!.FFMPEG! : string.Empty;
-        _ffmpegTempFile = Path.GetTempFileName();
+        _ffmpegExecutable = _takeRecording ? configuration.Value.FlaUi.Settings.Capturing.FFMPEG : string.Empty;
+        _ffmpegTempFile = Path.GetRandomFileName();
+    }
+
+    ~ScreenCapturing()
+    {
+        Dispose(false);
     }
 
     public void Dispose()
     {
-        if (!_isDisposed)
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (_disposed || !disposing)
         {
-            _isDisposed = true;
-            _videoRecorder?.Dispose();
+            return;
         }
+
+        _videoRecorder?.Dispose();
+        _disposed = true;
     }
 
     public void TakeScreenshot(FeatureContext featureContext, ScenarioContext scenarioContext)
     {
-        if (_takeScreenShots)
+        if (_takeScreenShots && scenarioContext.ScenarioExecutionStatus == ScenarioExecutionStatus.TestError)
         {
-            if (scenarioContext.ScenarioExecutionStatus == ScenarioExecutionStatus.TestError)
-            {
-                var img = Capture.Screen();
-                img.ApplyOverlays(new MouseOverlay(img));
+            var img = Capture.Screen();
+            img.ApplyOverlays(new MouseOverlay(img));
 
-                Directory.CreateDirectory(_outputPath!);
-                string filename = $"{CurrentDateTime} {featureContext.FeatureInfo.Title} {scenarioContext.ScenarioInfo.Title} {scenarioContext.ScenarioExecutionStatus}.png";
-                img.ToFile(Path.Combine(_outputPath!, filename));
-            }
+            Directory.CreateDirectory(_outputPath!);
+            string filename = $"{CurrentDateTime} {featureContext.FeatureInfo.Title} {scenarioContext.ScenarioInfo.Title} {scenarioContext.ScenarioExecutionStatus}.png";
+            img.ToFile(Path.Combine(_outputPath!, filename));
         }
     }
 
@@ -64,10 +83,12 @@ public class ScreenCapturer : IScreenCapturer
         {
             _recording = true;
             _videoRecorder?.Dispose();
+
             _videoRecorder = new VideoRecorder(
                 new VideoRecorderSettings
                 {
-                    VideoQuality = 26,
+                    VideoFormat = VideoFormat.xvid,
+                    VideoQuality = 5,
                     ffmpegPath = _ffmpegExecutable,
                     TargetVideoPath = _ffmpegTempFile
                 },
@@ -92,7 +113,7 @@ public class ScreenCapturer : IScreenCapturer
             if (scenarioContext.ScenarioExecutionStatus == ScenarioExecutionStatus.TestError)
             {
                 Directory.CreateDirectory(_outputPath!);
-                string filename = $"{CurrentDateTime} {featureContext.FeatureInfo.Title} {scenarioContext.ScenarioInfo.Title} {scenarioContext.ScenarioExecutionStatus}.mpg";
+                string filename = $"{CurrentDateTime} {featureContext.FeatureInfo.Title} {scenarioContext.ScenarioInfo.Title} {scenarioContext.ScenarioExecutionStatus}.mp4";
                 File.Move(_ffmpegTempFile!, Path.Combine(_outputPath!, filename));
             }
             else

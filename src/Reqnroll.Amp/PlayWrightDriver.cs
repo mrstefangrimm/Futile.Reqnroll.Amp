@@ -25,7 +25,7 @@ public class PlayWrightDriverBase : AmpDriver<Task<IPage>>, IDisposable, IAsyncD
         var apiSettings = _appSettings.Value.Playwright;
 
         var profiles = apiSettings.Profiles;
-        if (profiles == null || !profiles.Any()) { throw new InvalidOperationException("No FlaUI profile defined"); }
+        if (profiles == null || !profiles.Any()) { throw new InvalidOperationException("No FlaUI profile defined."); }
 
         if (_launchProfileName == null)
         {

@@ -17,13 +17,11 @@ public static class TestStartup
     {
         builder.RegisterConfiguration();
         builder.RegisterAppSettings();
+        builder.RegisterScreenCapturing();
 
         builder.RegisterType<CalculatorStepDefinitions>().InstancePerDependency();
         builder.RegisterType<CalculatorMainWindow>().AsSelf().InstancePerDependency();
         builder.RegisterType<CalculatorService>().As<ICalculatorService>().InstancePerLifetimeScope();
         builder.RegisterType<FlaUIDriver>().AsSelf().InstancePerLifetimeScope();
-
-        //builder.RegisterType<ScreenCaptureHook>().AsSelf().InstancePerLifetimeScope();
-        builder.RegisterScreenCapturer();
     }
 }
