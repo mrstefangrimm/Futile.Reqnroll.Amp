@@ -3,5 +3,14 @@
     "coloredOutput": false,
     "traceSuccessfulSteps": true,
     "featureLanguage": "en"
-  }
+  },
+  "formatters": {
+    "html": { "outputFilePath": "report/reqnroll_report.html" },
+    "message": { "outputFilePath": "report/cucumber_messages.ndjson" }
+  },
+  "bindingAssemblies": [
+    {
+      "assembly": "Reqnroll.Amp-windows"
+    }
+  ]
 }
