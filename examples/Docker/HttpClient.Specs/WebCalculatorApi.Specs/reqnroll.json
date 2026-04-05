@@ -2,6 +2,9 @@
   "reqnroll": {
     "coloredOutput": false,
     "traceSuccessfulSteps": true,
-    "featureLanguage":  "en"
+    "featureLanguage": "en"
+  },
+  "formatters": {
+    "html": { "outputFilePath": "report/reqnroll_report.html" }
   }
 }

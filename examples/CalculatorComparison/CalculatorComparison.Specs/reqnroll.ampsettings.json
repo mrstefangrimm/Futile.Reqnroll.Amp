@@ -1,7 +1,11 @@
 {
   "flaui": {
     "settings": {
-      "uia": "UIA2"
+      "uia": "UIA2",
+      "capturing": {
+        "type": "Screenshot",
+        "outputpath": "report"
+      }
     },
     "profiles": {
       "WPF Calculator": {

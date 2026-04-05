@@ -1,11 +1,7 @@
 {
   "flaui": {
     "settings": {
-      "uia": "UIA2",
-      "capturing": {
-        "type": "Screenshot",
-        "outputpath": "C:\\Temp\\Capture"
-      }
+      "uia": "UIA2"
     },
     "profiles": {
       "Calculator One": {
