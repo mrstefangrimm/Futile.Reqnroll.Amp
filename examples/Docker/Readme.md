@@ -10,7 +10,7 @@ Requires:
 
 ### 1 Build and Run SUT containers
 
-Manual build and creation of the test containers. This is usually automated by a build pipeline.
+Manual build and create the test containers.
 
 ```bash
 # Create a network for both SUTs and Tests
@@ -25,7 +25,7 @@ docker build . -t webcalculatorapi:latest
 docker run -d --name webcalculatorapi --network calcnet -p 8080:8080 webcalculatorapi:latest
 ```
 
-### Test the SUI containers
+### Test the SUT
 
 #### Web UI:
 URL in browser: http://localhost:80
@@ -35,7 +35,7 @@ URL in browser: http://localhost:80
 curl -X POST http://localhost:8080/api/calculation -H "Content-Type: application/json" -d '{ "firstNumber": 1, "secondNumber": 2, "mathOperation": "Add" }'
 ```
 
-### 2 Build, Run and Execute WebCalculator Test container
+### 2 Build, Run the WebCalculator Test container and Execute the Tests
 
 Build and run the test container.
 
@@ -45,24 +45,39 @@ docker build . -t webcalculator.specs:latest
 docker run -it --name webcalculator.specs --network calcnet --rm webcalculator.specs:latest
 ```
 
-Run the tests in the test container. `xunit.v3` creates an executable.
+Execute the tests in the test container. `xunit.v3` creates an executable.
 
 ```bash
 ./bin/Debug/net10.0/WebCalculator.Specs
 ```
 
-### 2 Build and Start WebAPI Test container
+### 3 Build, Run the WebAPI Test container and Execute the Tests
 
 Build and run the test container.
- 
+
 ```bash
 cd ../HttpClient.Specs/
 docker build . -t webcalculatorapi.specs:latest
 docker run -it --name webcalculatorapi.specs --network calcnet --rm webcalculatorapi.specs:latest
 ```
 
-Run the tests in the test container. `xunit.v3` creates an executable.
+Execute the tests in the test container. `xunit.v3` creates an executable.
 
 ```bash
 ./bin/Debug/net10.0/WebCalculatorApi.Specs
 ```
+
+
+
+### 4 Clean-up
+
+```bash
+docker rm -f webcalculatorapi
+docker rm -f webcalculator
+docker rmi -f webcalculatorapi.specs
+docker rmi -f webcalculator.specs
+docker rmi -f webcalculatorapi
+docker rmi -f webcalculator
+docker network rm calcnet
+```
+
