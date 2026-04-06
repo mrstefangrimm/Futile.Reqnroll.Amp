@@ -1,0 +1,22 @@
+
+cd examples/OpenShift
+
+// Create SUT
+oc apply -f .\imagestream-s2i-webcalculator.yaml
+oc apply -f .\imagestream-s2i-webcalculatorapi.yaml
+
+oc apply -f .\buildconfig-s2i-webcalculator.yaml
+oc apply -f .\buildconfig-s2i-webcalculatorapi.yaml
+
+
+Manually start builds
+oc start-build s2i-webcalculator
+oc start-build s2i-webcalculatorapi
+
+
+oc apply -f .\deployment-s2i-webcalculator.yaml
+
+
+oc adm policy add-scc-to-user anyuid -z full-perm-account -n mydemo
+oc adm policy add-scc-to-user privileged -z full-perm-account -n mydemo
+

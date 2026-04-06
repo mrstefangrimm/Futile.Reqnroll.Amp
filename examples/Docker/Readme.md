@@ -16,7 +16,7 @@ Manual build and create the test containers.
 # Create a network for both SUTs and Tests
 docker network create calcnet
 
-cd ../../tests/WebCalculator/
+cd tests/WebCalculator/
 docker build . -t webcalculator:latest
 docker run -d --name webcalculator --network calcnet -p 80:80 webcalculator:latest
 
