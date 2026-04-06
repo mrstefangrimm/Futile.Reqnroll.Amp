@@ -9,7 +9,7 @@
     },
     "profiles": {
       "WPF Calculator": {
-        "app": "..\\..\\..\\..\\WpfCalculator\\WpfCalculator.exe",
+        "app": "WpfCalculator\\WpfCalculator.exe",
         "launch": "Exe"
       },
       "Windows Calculator": {

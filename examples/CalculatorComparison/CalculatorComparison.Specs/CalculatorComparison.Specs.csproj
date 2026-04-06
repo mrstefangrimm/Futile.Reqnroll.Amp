@@ -28,4 +28,21 @@
         </None>
     </ItemGroup>
 
+    <ItemGroup>
+        <WpfCalculatorFiles Include="$(ProjectDir)..\WpfCalculator\**\*" />
+    </ItemGroup>
+    
+    <Target Name="CopyWpfCalculatorOnBuild" AfterTargets="Build">
+        <Copy
+            SourceFiles="@(WpfCalculatorFiles)"
+            DestinationFolder="$(OutDir)WpfCalculator\%(RecursiveDir)"
+            SkipUnchangedFiles="true" />
+    </Target>
+
+    <Target Name="CopyWpfCalculatorOnPublish" AfterTargets="Publish">
+        <Copy
+            SourceFiles="@(WpfCalculatorFiles)"
+            DestinationFolder="..\published\WpfCalculator\%(RecursiveDir)" />
+    </Target>
+
 </Project>

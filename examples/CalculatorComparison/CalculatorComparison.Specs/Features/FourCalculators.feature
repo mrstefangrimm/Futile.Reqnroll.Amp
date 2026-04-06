@@ -1,7 +1,7 @@
 Feature: Four Calculators
-Example of a test with four calculators.
+Example of a test with four calculators tested in one scenario.
 
-Scenario: Add two numbers
+Scenario: Add two numbers and compare the results
     Given the four Calculator
     And the first number for WPF is 50
     And the first number for Futile is 40

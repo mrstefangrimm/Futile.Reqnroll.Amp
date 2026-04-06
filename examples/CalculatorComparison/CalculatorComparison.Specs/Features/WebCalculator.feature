@@ -1,4 +1,5 @@
 Feature: Web Calculator
+Example of a test for https://webcalculator.netlify.app/.
 
 Scenario: Add two numbers
     Given the web calculator

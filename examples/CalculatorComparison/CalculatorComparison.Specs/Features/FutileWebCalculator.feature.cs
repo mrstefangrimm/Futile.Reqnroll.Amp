@@ -17,7 +17,7 @@ namespace CalculatorComparison.Specs.Features
     
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "3.0.0.0")]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class Futile_CalculatorFeature : object, Xunit.IClassFixture<Futile_CalculatorFeature.FixtureData>, Xunit.IAsyncLifetime
+    public partial class FutileWebCalculatorFeature : object, Xunit.IClassFixture<FutileWebCalculatorFeature.FixtureData>, Xunit.IAsyncLifetime
     {
         
         private global::Reqnroll.ITestRunner testRunner;
@@ -26,12 +26,12 @@ namespace CalculatorComparison.Specs.Features
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "Features", "Futile-Calculator", null, global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "Features", "Futile Web Calculator", "Example of a test for https://futile-calculator.netlify.app/.", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags, InitializeCucumberMessages());
         
-#line 1 "FutileCalculator.feature"
+#line 1 "FutileWebCalculator.feature"
 #line hidden
         
-        public Futile_CalculatorFeature(Futile_CalculatorFeature.FixtureData fixtureData, Xunit.ITestOutputHelper testOutputHelper)
+        public FutileWebCalculatorFeature(FutileWebCalculatorFeature.FixtureData fixtureData, Xunit.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
         }
@@ -105,7 +105,7 @@ namespace CalculatorComparison.Specs.Features
         
         private static global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages InitializeCucumberMessages()
         {
-            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Features/FutileCalculator.feature.ndjson", 3);
+            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Features/FutileWebCalculator.feature.ndjson", 3);
         }
         
         async System.Threading.Tasks.ValueTask Xunit.IAsyncLifetime.InitializeAsync()
@@ -134,7 +134,7 @@ namespace CalculatorComparison.Specs.Features
         }
         
         [global::Xunit.FactAttribute(DisplayName="Add two numbers")]
-        [global::Xunit.TraitAttribute("FeatureTitle", "Futile-Calculator")]
+        [global::Xunit.TraitAttribute("FeatureTitle", "Futile Web Calculator")]
         [global::Xunit.TraitAttribute("Description", "Add two numbers")]
         public async global::System.Threading.Tasks.Task AddTwoNumbers()
         {
@@ -144,7 +144,7 @@ namespace CalculatorComparison.Specs.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Add two numbers", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 3
+#line 4
 this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -154,19 +154,19 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 4
+#line 5
     await testRunner.GivenAsync("the futile calculator", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 5
+#line 6
     await testRunner.AndAsync("the first number is 50", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 6
+#line 7
     await testRunner.AndAsync("the second number is 70", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 7
+#line 8
     await testRunner.WhenAsync("the two numbers are added", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 8
+#line 9
     await testRunner.ThenAsync("the result should be 120", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
@@ -180,12 +180,12 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             
             async System.Threading.Tasks.ValueTask Xunit.IAsyncLifetime.InitializeAsync()
             {
-                await Futile_CalculatorFeature.FeatureSetupAsync();
+                await FutileWebCalculatorFeature.FeatureSetupAsync();
             }
             
             async System.Threading.Tasks.ValueTask System.IAsyncDisposable.DisposeAsync()
             {
-                await Futile_CalculatorFeature.FeatureTearDownAsync();
+                await FutileWebCalculatorFeature.FeatureTearDownAsync();
             }
         }
     }
