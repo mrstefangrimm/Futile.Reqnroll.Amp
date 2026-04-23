@@ -4,12 +4,12 @@ namespace WebCalculatorApi.Services;
 
 public interface ICalculationService
 {
-    CalculationResponse Calculate(CalcuationRequest request);
+    CalculationResponse Calculate(CalculationRequest request);
 }
 
 public class CalculationService : ICalculationService
 {
-    public CalculationResponse Calculate(CalcuationRequest request)
+    public CalculationResponse Calculate(CalculationRequest request)
     {
         return request.MathOperation switch
         {

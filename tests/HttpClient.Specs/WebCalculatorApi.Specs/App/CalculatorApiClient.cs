@@ -17,7 +17,7 @@ public class CalculatorApiClient
 
     public async Task<double> GetResult(int first, int second, string oper)
     {
-        string json = JsonSerializer.Serialize(new CalcuationRequest(first, second, oper));
+        string json = JsonSerializer.Serialize(new CalculationRequest(first, second, oper));
         var content = new StringContent(json, Encoding.UTF8, "application/json");
 
         var response = await _driver.Stub.PostAsync(string.Empty, content);
