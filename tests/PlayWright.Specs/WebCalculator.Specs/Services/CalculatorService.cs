@@ -4,10 +4,10 @@ namespace WebCalculator.Specs.Services;
 
 public interface ICalculatorService
 {
-    HomePage MainPage { get; }
+    HomePage HomePage { get; }
 }
 
 public class CalculatorService(HomePage homePage) : ICalculatorService
 {
-    public HomePage MainPage { get; } = homePage;
+    public HomePage HomePage { get; } = homePage;
 }
