@@ -75,11 +75,15 @@ public class FlaUIDriverBase : AmpDriver<Window>, IDisposable
 
         if (profile.Position != null)
         {
-            mainWindow.Move(profile.Position.X, profile.Position.Y);
+            if (!mainWindow.Patterns.Transform.IsSupported || !mainWindow.Patterns.Transform.Pattern.CanMove)
+                throw new InvalidOperationException("profile.position is not supported");
+            mainWindow.Patterns.Transform.Pattern.Move(profile.Position.X, profile.Position.Y);
         }
 
-        if (mainWindow.Patterns.Transform.IsSupported && profile.Size != null)
+        if (profile.Size != null)
         {
+            if (!mainWindow.Patterns.Transform.IsSupported || !mainWindow.Patterns.Transform.Pattern.CanResize)
+                throw new InvalidOperationException("profile.size is not supported");
             mainWindow.Patterns.Transform.Pattern.Resize(profile.Size.Width, profile.Size.Height);
         }
 
