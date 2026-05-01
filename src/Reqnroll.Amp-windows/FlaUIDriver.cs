@@ -71,7 +71,19 @@ public class FlaUIDriverBase : AmpDriver<Window>, IDisposable
             throw new InvalidOperationException();
         }
 
-        return _application!.GetMainWindow(automation)!;
+        var mainWindow = _application!.GetMainWindow(automation)!;
+
+        if (profile.Position != null)
+        {
+            mainWindow.Move(profile.Position.X, profile.Position.Y);
+
+            if (mainWindow.Patterns.Transform.IsSupported)
+            {
+                mainWindow.Patterns.Transform.Pattern.Resize(profile.Position.Width, profile.Position.Height);
+            }
+        }
+
+        return mainWindow;
     }
 
     public void Dispose()

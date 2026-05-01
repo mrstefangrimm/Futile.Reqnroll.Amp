@@ -49,6 +49,8 @@ public class FlaUIProfile
     public string Arguments { get; set; } = null!;
 
     public LaunchCommand? Launch { get; set; } = null;
+
+    public Position? Position { get; set; } = null!;
 }
 
 public class ErrorCapturing
@@ -75,3 +77,5 @@ public enum LaunchCommand
     Exe,
     StoreApp,
 }
+
+public record Position(int X, int Y, int Width, int Height);
