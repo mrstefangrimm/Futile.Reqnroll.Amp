@@ -10,7 +10,15 @@
       },
       "Futile Calculator slowmo": {
         "url": "https://futile-calculator.netlify.app/",
-        "slowMo": 1000
+        "slowMo": 1000,
+        "position": {
+          "x": 10,
+          "y": 10
+        },
+        "size": {
+          "width": 800,
+          "height": 600
+        }
       },
       "Futile Calculator slowmo local url": {
         "url": " https://localhost:5001",

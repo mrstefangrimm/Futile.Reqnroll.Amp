@@ -10,11 +10,12 @@
         "arguments": "Hello One",
         "position": {
           "x": 10,
-          "y": 10,
+          "y": 10
+        },
+        "size": {
           "width": 500,
           "height": 600
         }
-
       },
       "Calculator Two": {
         "app": "..\\..\\..\\..\\..\\WpfCalculator\\WpfCalculator\\bin\\Debug\\net10.0-windows\\WpfCalculator.exe",
@@ -22,9 +23,7 @@
         "arguments": "Hello Two",
         "position": {
           "x": 550,
-          "y": 10,
-          "width": 500,
-          "height": 600
+          "y": 10
         }
       }
     }
