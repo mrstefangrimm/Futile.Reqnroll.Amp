@@ -11,7 +11,7 @@
 
     <ItemGroup>
         <PackageReference Include="FluentAssertions" Version="6.12.2" />
-        <PackageReference Include="Futile.Reqnroll.Amp-windows" Version="0.0.2-prerelease.5" />
+        <PackageReference Include="Futile.Reqnroll.Amp-windows" Version="0.0.2-prerelease.8" />
         <PackageReference Include="Reqnroll" Version="3.3.4" />
         <PackageReference Include="Reqnroll.Autofac" Version="3.3.4" />
         <PackageReference Include="Reqnroll.Tools.MsBuild.Generation" Version="3.3.4" />
@@ -33,16 +33,11 @@
     </ItemGroup>
     
     <Target Name="CopyWpfCalculatorOnBuild" AfterTargets="Build">
-        <Copy
-            SourceFiles="@(WpfCalculatorFiles)"
-            DestinationFolder="$(OutDir)WpfCalculator\%(RecursiveDir)"
-            SkipUnchangedFiles="true" />
+        <Copy SourceFiles="@(WpfCalculatorFiles)" DestinationFolder="$(OutDir)WpfCalculator\%(RecursiveDir)" SkipUnchangedFiles="true" />
     </Target>
 
     <Target Name="CopyWpfCalculatorOnPublish" AfterTargets="Publish">
-        <Copy
-            SourceFiles="@(WpfCalculatorFiles)"
-            DestinationFolder="..\published\WpfCalculator\%(RecursiveDir)" />
+        <Copy SourceFiles="@(WpfCalculatorFiles)" DestinationFolder="..\published\WpfCalculator\%(RecursiveDir)" />
     </Target>
 
 </Project>

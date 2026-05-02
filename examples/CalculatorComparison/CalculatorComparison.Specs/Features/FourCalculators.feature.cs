@@ -133,15 +133,15 @@ namespace CalculatorComparison.Specs.Features
             await this.TestTearDownAsync();
         }
         
-        [global::Xunit.FactAttribute(DisplayName="Add two numbers and compare the results")]
+        [global::Xunit.FactAttribute(DisplayName="Add two numbers in four different calculators and compare the results")]
         [global::Xunit.TraitAttribute("FeatureTitle", "Four Calculators")]
-        [global::Xunit.TraitAttribute("Description", "Add two numbers and compare the results")]
-        public async global::System.Threading.Tasks.Task AddTwoNumbersAndCompareTheResults()
+        [global::Xunit.TraitAttribute("Description", "Add two numbers in four different calculators and compare the results")]
+        public async global::System.Threading.Tasks.Task AddTwoNumbersInFourDifferentCalculatorsAndCompareTheResults()
         {
             string[] tagsOfScenario = ((string[])(null));
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "0";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Add two numbers and compare the results", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Add two numbers in four different calculators and compare the results", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 4
