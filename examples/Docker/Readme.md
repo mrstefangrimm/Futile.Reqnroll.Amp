@@ -42,7 +42,7 @@ Build and run the test container.
 ```bash
 cd ../../examples/Docker/PlayWright.Specs/
 docker build . -t webcalculator.specs:latest
-docker run -it --name webcalculator.specs --network calcnet --rm webcalculator.specs:latest
+docker run -it --name webcalculator.specs --network calcnet -v.://src/WebCalculator.Specs/bin/Debug/net10.0/report --rm webcalculator.specs:latest
 ```
 
 Execute the tests in the test container. `xunit.v3` creates an executable.
@@ -51,6 +51,16 @@ Execute the tests in the test container. `xunit.v3` creates an executable.
 ./bin/Debug/net10.0/WebCalculator.Specs
 ```
 
+Exit and terminate the docker container.
+
+```bash
+exit
+```
+
+The test report is available as html in the current Windows directory. You may want to delete the file *reqnroll_report.html* after reviewing it.
+
+
+
 ### 3 Build, Run the WebAPI Test container and Execute the Tests
 
 Build and run the test container.
@@ -58,7 +68,7 @@ Build and run the test container.
 ```bash
 cd ../HttpClient.Specs/
 docker build . -t webcalculatorapi.specs:latest
-docker run -it --name webcalculatorapi.specs --network calcnet --rm webcalculatorapi.specs:latest
+docker run -it --name webcalculatorapi.specs --network calcnet -v.://src/WebCalculatorApi.Specs/bin/Debug/net10.0/report --rm webcalculatorapi.specs:latest
 ```
 
 Execute the tests in the test container. `xunit.v3` creates an executable.
@@ -67,7 +77,13 @@ Execute the tests in the test container. `xunit.v3` creates an executable.
 ./bin/Debug/net10.0/WebCalculatorApi.Specs
 ```
 
+Exit and terminate the docker container.
 
+```bash
+exit
+```
+
+The test report is available as html in the current Windows directory. You may want to delete the file *reqnroll_report.html* after reviewing it.
 
 ### 4 Clean-up
 
