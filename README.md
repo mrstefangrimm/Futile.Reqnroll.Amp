@@ -2,7 +2,7 @@
 
 ![Reqnroll.Amp](res/rnramp-banner.png)
 
-Reqnroll.Amp is a class library that boosts (amplifies) your test‑writing. [Reqnroll](https://reqnroll.net/) is [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development) testing environment for C#. Reqnroll.Amp is a tiny class library on top of Reqnroll.
+Reqnroll.Amp is a class library that boosts (amplifies) your test‑writing. [Reqnroll](https://reqnroll.net/) is the [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development) testing environment for C#. Reqnroll.Amp is a tiny class library on top of Reqnroll.
 
 
 
@@ -18,7 +18,7 @@ Reqnroll.Amp is a class library that boosts (amplifies) your test‑writing. [Re
 
 ## Getting Started
 
-The e2e tests under /tests/ are best suited to get started. The source code contains tests for all of the features listed above.
+The test projects under /tests/ are best suited to get started. The source code contains tests for all of the features listed above.
 
 | Test Project | Feature | Description |
 | -- | -- | -- |
@@ -36,13 +36,16 @@ The e2e tests under /tests/ are best suited to get started. The source code cont
 
 ## Examples
 
-The examples are bigger than tests. The examples do not try to solve "real world problems". Instead, they demonstrate some aspects of e2e testing.
+The example projects are more extensive than test projects. The example projects do not try to solve "real world problems". Instead, they demonstrate some aspects of E2E testing like:
+
+- Test multiple systems in one test scenario
+- Test a web application in a docker container
 
 
 
 ## How it works
 
-While Reqnroll does the hard stuff and lets you use BDD for unit tests, integration tests, e2e test with any framework that is on the market (PlayWright, Selenium, ... you name it), various DI frameworks, Testing frameworks (MSTest, NUnit, xUnit), Reqnroll.Amp comes with some hard-wired decisions.
+While Reqnroll does the hard stuff and lets you use BDD for unit tests, integration tests, E2E test with any framework that is on the market (PlayWright, Selenium, ... you name it), various DI frameworks, Testing frameworks (MSTest, NUnit, xUnit), Reqnroll.Amp comes with some hard-wired decisions.
 
 
 
@@ -59,7 +62,7 @@ Reqnroll.Amp uses:
 Two features are unique:
 
 1. It is possible to define profiles in `reqnroll.ampsettings.json` which can be selected at runtime
-2. It is possible to start applications as part of a e2e test. Muliple Web UIs, APIs and Windows applications can be part of one test scenario
+2. It is possible to start applications as part of a e2e test. Multiple Web UIs, APIs and Windows applications can be part of one test scenario
 
 
 
