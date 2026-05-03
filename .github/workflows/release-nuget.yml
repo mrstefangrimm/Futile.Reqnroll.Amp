@@ -33,4 +33,8 @@ jobs:
     - name: Push APP
       run: dotnet nuget push Futile.Reqnroll.Amp-windows.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.PUSH_NUGET }}
     - name: Create Git Tag
-      run: git tag Nuget_${VERSION}
+      run: |
+        echo "${VERSION}"
+        git tag Nuget_${VERSION}
+    - name: Push Git Tag
+      run: git push origin Nuget_${VERSION}   
