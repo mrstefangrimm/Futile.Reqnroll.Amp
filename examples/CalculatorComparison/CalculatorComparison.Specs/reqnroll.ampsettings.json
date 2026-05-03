@@ -1,12 +1,24 @@
 {
   "flaui": {
     "settings": {
-      "uia": "UIA2"
+      "uia": "UIA2",
+      "capturing": {
+        "type": "Screenshot",
+        "outputpath": "report"
+      }
     },
     "profiles": {
       "WPF Calculator": {
-        "app": "..\\..\\..\\..\\WpfCalculator\\WpfCalculator.exe",
-        "launch": "Exe"
+        "app": "WpfCalculator\\WpfCalculator.exe",
+        "launch": "Exe",
+        "position": {
+          "x": 10,
+          "y": 10
+        },
+        "size": {
+          "width": 500,
+          "height": 400
+        }
       },
       "Windows Calculator": {
         "app": "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App",
@@ -17,10 +29,26 @@
   "playwright": {
     "profiles": {
       "Futile-Calculator": {
-        "url": "https://futile-calculator.netlify.app/"
+        "url": "https://futile-calculator.netlify.app/",
+        "position": {
+          "x": 420,
+          "y": 10
+        },
+        "size": {
+          "width": 500,
+          "height": 300
+        }
       },
       "WebCalculator": {
-        "url": "https://webcalculator.netlify.app/"
+        "url": "https://webcalculator.netlify.app/",
+        "position": {
+          "x": 420,
+          "y": 330
+        },
+        "size": {
+          "width": 500,
+          "height": 700
+        }
       }
     }
   }

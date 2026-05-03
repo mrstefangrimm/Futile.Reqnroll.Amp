@@ -25,7 +25,7 @@ public class PlayWrightDriverBase : AmpDriver<Task<IPage>>, IDisposable, IAsyncD
         var apiSettings = _appSettings.Value.Playwright;
 
         var profiles = apiSettings.Profiles;
-        if (profiles == null || !profiles.Any()) { throw new InvalidOperationException("No FlaUI profile defined"); }
+        if (profiles == null || !profiles.Any()) { throw new InvalidOperationException("No FlaUI profile defined."); }
 
         if (_launchProfileName == null)
         {
@@ -36,15 +36,33 @@ public class PlayWrightDriverBase : AmpDriver<Task<IPage>>, IDisposable, IAsyncD
         var profile = profiles[_launchProfileName];
         if (profile == null) { throw new InvalidOperationException($"Invalid profile with name {_launchProfileName}."); }
 
+        var args = new List<string>();
+        ViewportSize? viewPortSize = null;
+        if (profile.Position != null)
+        {
+            args.Add($"--window-position={profile.Position.X},{profile.Position.Y}");
+        }
+        if (profile.Size != null)
+        {
+            args.Add($"--window-size={profile.Size.Width},{profile.Size.Height}");
+            viewPortSize = ViewportSize.NoViewport;
+        }
+
         var playwright = await Playwright.CreateAsync().ConfigureAwait(false);
         var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
         {
             Headless = profile.Headless,
             SlowMo = profile.SlowMo,
-            ExecutablePath = profile.ChromeExecutablePath
+            ExecutablePath = profile.ChromeExecutablePath,
+            Args = args
         }).ConfigureAwait(false);
 
-        _homePage = await browser.NewPageAsync().ConfigureAwait(false);
+        var context = await browser.NewContextAsync(new BrowserNewContextOptions
+        {
+            ViewportSize = viewPortSize
+        });
+
+        _homePage = await context.NewPageAsync().ConfigureAwait(false);
 
         await _homePage.GotoAsync(_launchArguments ?? profile.Url);
 

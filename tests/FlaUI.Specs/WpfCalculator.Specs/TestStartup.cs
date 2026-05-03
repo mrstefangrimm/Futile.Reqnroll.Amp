@@ -17,6 +17,7 @@ public static class TestStartup
     {
         builder.RegisterConfiguration();
         builder.RegisterAppSettings();
+        builder.RegisterScreenCapturing();
 
         builder.RegisterType<CalculatorStepDefinitions>().InstancePerDependency();
         builder.RegisterType<CalculatorMainWindow>().AsSelf().InstancePerDependency();

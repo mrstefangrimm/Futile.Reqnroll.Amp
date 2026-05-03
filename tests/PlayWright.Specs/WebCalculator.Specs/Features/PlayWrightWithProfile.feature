@@ -14,7 +14,7 @@ Scenario: Add two numbers headless
     When the two numbers are added
     Then the result should be 120
 
-Scenario: Add two numbers in slow motion
+Scenario: Add two numbers in slow motion and position and size are set
     Given profile is selected with slowmo
     And the first number is 50
     And the second number is 70

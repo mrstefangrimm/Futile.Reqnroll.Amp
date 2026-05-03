@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="../LICENSE" />
+  </Folder>
+  <Folder Name="/Windows/">
+    <Project Path="CalculatorComparison/CalculatorComparison.Specs/CalculatorComparison.Specs.csproj" />
+  </Folder>
+  <Folder Name="/Docker/">
+    <Project Path="Docker/HttpClient.Specs/WebCalculatorApi.Specs/WebCalculatorApi.Specs.csproj" />
+    <Project Path="Docker/PlayWright.Specs/WebCalculator.Specs/WebCalculator.Specs.csproj" />
+  </Folder>
+</Solution>

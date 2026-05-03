@@ -1,4 +1,5 @@
 Feature: WPF Calculator
+Example of a test for a Windows application written with WPF.
 
 Scenario: Add two numbers
     Given WPF Calculator

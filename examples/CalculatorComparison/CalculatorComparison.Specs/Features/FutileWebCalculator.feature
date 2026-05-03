@@ -1,4 +1,5 @@
-Feature: Futile-Calculator
+Feature: Futile Web Calculator
+Example of a test for https://futile-calculator.netlify.app/.
 
 Scenario: Add two numbers
     Given the futile calculator

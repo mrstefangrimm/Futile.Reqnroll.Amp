@@ -211,15 +211,15 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             await this.ScenarioCleanupAsync();
         }
         
-        [global::Xunit.FactAttribute(DisplayName="Add two numbers in slow motion")]
+        [global::Xunit.FactAttribute(DisplayName="Add two numbers in slow motion and position and size are set")]
         [global::Xunit.TraitAttribute("FeatureTitle", "PlayWright with Profile")]
-        [global::Xunit.TraitAttribute("Description", "Add two numbers in slow motion")]
-        public async global::System.Threading.Tasks.Task AddTwoNumbersInSlowMotion()
+        [global::Xunit.TraitAttribute("Description", "Add two numbers in slow motion and position and size are set")]
+        public async global::System.Threading.Tasks.Task AddTwoNumbersInSlowMotionAndPositionAndSizeAreSet()
         {
             string[] tagsOfScenario = ((string[])(null));
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "2";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Add two numbers in slow motion", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Add two numbers in slow motion and position and size are set", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 17

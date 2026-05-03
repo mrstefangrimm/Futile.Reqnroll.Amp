@@ -8,13 +8,13 @@ namespace WebCalculatorApi.Controllers;
 public class CalculationController(ICalculationService calculationService) : ControllerBase
 {
     [HttpPost]
-    public CalculationResponse Post([FromBody] CalcuationRequest request)
+    public CalculationResponse Post([FromBody] CalculationRequest request)
     {
         return calculationService.Calculate(request);
     }
 }
 
-public record CalcuationRequest(int FirstNumber, int SecondNumber, string MathOperation)
+public record CalculationRequest(int FirstNumber, int SecondNumber, string MathOperation)
 {
 }
 

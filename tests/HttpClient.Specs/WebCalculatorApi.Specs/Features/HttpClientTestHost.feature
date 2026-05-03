@@ -1,4 +1,3 @@
-@Calculator
 Feature: HttpClient with ASP.NET TestHost
 The calculator Web API is tested by starting a TestHost and registering a IDriverInstanceFactory
 

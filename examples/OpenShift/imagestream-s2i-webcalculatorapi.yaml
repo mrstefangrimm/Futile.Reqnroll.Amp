@@ -1,0 +1,8 @@
+﻿kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: s2i-webcalculatorapi
+  namespace: mydemo
+spec:
+  lookupPolicy:
+    local: false

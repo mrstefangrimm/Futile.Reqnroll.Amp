@@ -47,7 +47,7 @@ public class FlaUIDriverBase : AmpDriver<Window>, IDisposable
         };
 
         var profiles = flaUi.Profiles;
-        if (profiles == null || !profiles.Any()) { throw new InvalidOperationException("No FlaUI profile defined"); }
+        if (profiles == null || !profiles.Any()) { throw new InvalidOperationException("No FlaUI profile defined."); }
 
         if (_launchProfileName == null)
         {
@@ -71,7 +71,23 @@ public class FlaUIDriverBase : AmpDriver<Window>, IDisposable
             throw new InvalidOperationException();
         }
 
-        return _application!.GetMainWindow(automation)!;
+        var mainWindow = _application!.GetMainWindow(automation)!;
+
+        if (profile.Position != null)
+        {
+            if (!mainWindow.Patterns.Transform.IsSupported || !mainWindow.Patterns.Transform.Pattern.CanMove)
+                throw new InvalidOperationException("profile.position is not supported");
+            mainWindow.Patterns.Transform.Pattern.Move(profile.Position.X, profile.Position.Y);
+        }
+
+        if (profile.Size != null)
+        {
+            if (!mainWindow.Patterns.Transform.IsSupported || !mainWindow.Patterns.Transform.Pattern.CanResize)
+                throw new InvalidOperationException("profile.size is not supported");
+            mainWindow.Patterns.Transform.Pattern.Resize(profile.Size.Width, profile.Size.Height);
+        }
+
+        return mainWindow;
     }
 
     public void Dispose()

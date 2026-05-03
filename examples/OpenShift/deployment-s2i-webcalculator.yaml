@@ -1,0 +1,102 @@
+﻿---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: full-perm-account
+  namespace: mydemo
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: 'system:openshift:scc:anyuid'
+  namespace: mydemo
+subjects:
+  - kind: ServiceAccount
+    name: full-perm-account
+    namespace: mydemo
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: 'system:openshift:scc:anyuid'
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: s2i-webcalculator
+  namespace: mydemo
+  annotations:
+    image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"s2i-webcalculator:latest","namespace":"mydemo"},"fieldPath":"spec.template.spec.containers[?(@.name==\"container\")].image","paused":false}]'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: s2i-webcalculator
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: s2i-webcalculator
+    spec:
+      containers:
+        - name: container
+          image: 'image-registry.openshift-image-registry.svc:5000/mydemo/s2i-webcalculator@sha256:10ae284c7941016d412f7ba922d0f1da96f8dd86e16023dd5d10ad0fed476f77'
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      serviceAccountName: full-perm-account
+      serviceAccount: full-perm-account
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 5
+  progressDeadlineSeconds: 600
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: service-s2i-webcalculator
+  namespace: mydemo
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"name":"service-s2i-webcalculator","namespace":"mydemo"},"spec":{"clusterIP":"10.217.5.178","clusterIPs":["10.217.5.178"],"internalTrafficPolicy":"Cluster","ipFamilies":["IPv4"],"ipFamilyPolicy":"SingleStack","ports":[{"port":80,"protocol":"TCP","targetPort":80}],"selector":{"app":"s2i-webcalculator"},"sessionAffinity":"None","type":"ClusterIP"}}
+spec:
+  clusterIP: 10.217.5.178
+  ipFamilies:
+    - IPv4
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  internalTrafficPolicy: Cluster
+  clusterIPs:
+    - 10.217.5.178
+  type: ClusterIP
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
+  selector:
+    app: s2i-webcalculator
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: route-s2i-webcalculator
+  namespace: mydemo
+  annotations:
+    openshift.io/host.generated: 'true'
+spec:
+  host: route-s2i-webcalculator.apps-crc.testing
+  to:
+    kind: Service
+    name: service-s2i-webcalculator
+    weight: 100
+  port:
+    targetPort: 80
+  wildcardPolicy: None

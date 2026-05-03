@@ -3,15 +3,8 @@ using Reqnroll.Amp;
 
 namespace WpfCalculator.Specs.App;
 
-public class CalculatorMainWindow
+public class CalculatorMainWindow(FlaUIDriver driver)
 {
-    private readonly FlaUIDriver _driver;
-
-    public CalculatorMainWindow(FlaUIDriver driver)
-    {
-        _driver = driver ?? throw new ArgumentNullException(nameof(driver));
-    }
-
     public void EnterFirstNumber(string number)
     {
         FirstNumberTextBox.Text += number;
@@ -32,13 +25,13 @@ public class CalculatorMainWindow
         return ResultTextBox.Text;
     }
 
-    public Label Title => _driver.Stub.FindFirstDescendant("label_CommandlineArgs").AsLabel();
-    public TextBox FirstNumberTextBox => _driver.Stub.FindFirstDescendant("TextBoxFirst").AsTextBox();
-    public TextBox SecondNumberTextBox => _driver.Stub.FindFirstDescendant("TextBoxSecond").AsTextBox();
-    public TextBox ResultTextBox => _driver.Stub.FindFirstDescendant("TextBoxResult").AsTextBox();
+    public Label Title => driver.Stub.FindFirstDescendant("label_CommandlineArgs").AsLabel();
+    public TextBox FirstNumberTextBox => driver.Stub.FindFirstDescendant("TextBoxFirst").AsTextBox();
+    public TextBox SecondNumberTextBox => driver.Stub.FindFirstDescendant("TextBoxSecond").AsTextBox();
+    public TextBox ResultTextBox => driver.Stub.FindFirstDescendant("TextBoxResult").AsTextBox();
 
-    public Button AddButton => _driver.Stub.FindFirstDescendant("ButtonAdd").AsButton();
-    public Button SubtractButton => _driver.Stub.FindFirstDescendant("ButtonSubtract").AsButton();
-    public Button MultiplyButton => _driver.Stub.FindFirstDescendant("ButtonMultiply").AsButton();
-    public Button DivideButton => _driver.Stub.FindFirstDescendant("ButtonDivide").AsButton();
+    public Button AddButton => driver.Stub.FindFirstDescendant("ButtonAdd").AsButton();
+    public Button SubtractButton => driver.Stub.FindFirstDescendant("ButtonSubtract").AsButton();
+    public Button MultiplyButton => driver.Stub.FindFirstDescendant("ButtonMultiply").AsButton();
+    public Button DivideButton => driver.Stub.FindFirstDescendant("ButtonDivide").AsButton();
 }

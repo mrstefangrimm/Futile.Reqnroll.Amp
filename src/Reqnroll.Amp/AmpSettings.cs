@@ -18,6 +18,9 @@ public class PlaywrightProfile
     public bool Headless { get; set; } = false;
     public int SlowMo { get; set; } = 200;
     public string ChromeExecutablePath { get; set; } = null!;
+
+    public WindowPosition Position { get; set; } = null!;
+    public WindowSize Size { get; set; } = null!;
 }
 
 public class WebApiConfiguration
@@ -49,6 +52,9 @@ public class FlaUIProfile
     public string Arguments { get; set; } = null!;
 
     public LaunchCommand? Launch { get; set; } = null;
+
+    public WindowPosition Position { get; set; } = null!;
+    public WindowSize Size { get; set; } = null!;
 }
 
 public class ErrorCapturing
@@ -75,3 +81,6 @@ public enum LaunchCommand
     Exe,
     StoreApp,
 }
+
+public record WindowPosition(int X, int Y);
+public record WindowSize(int Width, int Height);

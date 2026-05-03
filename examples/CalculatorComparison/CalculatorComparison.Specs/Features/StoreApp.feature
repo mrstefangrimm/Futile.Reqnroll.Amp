@@ -1,5 +1,5 @@
 Feature: StoreApp Windows Calculator
-The FlaUI plug-in shall launch windows calculator.
+Example of a test for the Windows Calculator.
 
 Scenario: Add two numbers
 	Given the Windows calculator

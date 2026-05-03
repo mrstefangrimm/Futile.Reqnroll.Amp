@@ -4,6 +4,9 @@ using CalculatorComparison.Specs.Services;
 using CalculatorComparison.Specs.Steps;
 using Reqnroll.Amp;
 using Reqnroll.Autofac;
+using Xunit;
+
+[assembly: CollectionBehavior(DisableTestParallelization = true)]
 
 namespace CalculatorComparison.Specs;
 
@@ -22,6 +25,7 @@ public static class TestStartup
     {
         builder.RegisterConfiguration();
         builder.RegisterAppSettings();
+        builder.RegisterScreenCapturing();
 
         builder.RegisterWpfCalculator();
         builder.RegisterStoreAppCalculator();
