@@ -4,8 +4,8 @@ dotnet restore --packages ./output-packages
 mkdir -p output-windows
 find ./output-packages -name "*.nupkg" -exec cp {} ./output-windows \;
 
-dotnet pack ./src/Reqnroll.Amp/Reqnroll.Amp.csproj -c Release -o ./output-windows
-dotnet pack ./src/Reqnroll.Amp-windows/Reqnroll.Amp-windows.csproj -c Release -o ./output-windows
+dotnet pack ./src/Reqnroll.Amp/Reqnroll.Amp.csproj -p:Version=0.1.0 -c Release -o ./output-windows
+dotnet pack ./src/Reqnroll.Amp-windows/Reqnroll.Amp-windows.csproj -p:Version=0.1.0 -c Release -o ./output-windows
 
 tar -czf artifacts-windows.tar.gz -C output-windows .
 

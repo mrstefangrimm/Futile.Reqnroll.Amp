@@ -4,7 +4,7 @@ dotnet restore --packages ./output-packages
 New-Item -ItemType Directory -Force -Path .\output
 Get-ChildItem -Path .\output-packages -Recurse -Filter *.nupkg | Copy-Item -Destination .\output
 
-dotnet pack .\src\Reqnroll.Amp\Reqnroll.Amp.csproj -c Release -o ./output
+dotnet pack .\src\Reqnroll.Amp\Reqnroll.Amp.csproj -p:Version=0.1.0 -c Release -o ./output
 
 Compress-Archive -Path .\output\* -DestinationPath .\artifacts.zip -Force
 
