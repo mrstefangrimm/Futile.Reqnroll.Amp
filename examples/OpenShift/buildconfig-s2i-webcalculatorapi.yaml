@@ -2,7 +2,7 @@
 apiVersion: build.openshift.io/v1
 metadata:
   name: s2i-webcalculatorapi
-  namespace: mydemo
+  namespace: futile-tests
 spec:
   output:
     to:
@@ -18,6 +18,6 @@ spec:
     type: Git
     git:
       uri: 'https://github.com/mrstefangrimm/Futile.Reqnroll.Amp'
-      ref: prerelease/0.0.2
+      ref: main
     contextDir: tests/WebCalculatorApi
   runPolicy: Serial
