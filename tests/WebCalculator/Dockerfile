@@ -9,7 +9,7 @@ COPY . .
 RUN dotnet publish WebCalculator/WebCalculator.csproj -c Release -o /app/dist
 
 # Runtime stage (nginx)
-FROM nginx:alpine AS final
+FROM nginx:stable-alpine3.24-slim AS final
 WORKDIR /usr/share/nginx/html
 COPY --from=build /app/dist/wwwroot .
 

@@ -18,7 +18,7 @@ docker network create calcnet
 
 cd tests/WebCalculator/
 docker build . -t webcalculator:latest
-docker run -d --name webcalculator --network calcnet -p 80:80 webcalculator:latest
+docker run -d --name webcalculator --network calcnet -p 81:80 webcalculator:latest
 
 cd ../WebCalculatorApi/
 docker build . -t webcalculatorapi:latest
@@ -28,7 +28,7 @@ docker run -d --name webcalculatorapi --network calcnet -p 8080:8080 webcalculat
 ### Test the SUT
 
 #### Web UI:
-URL in browser: http://localhost:80
+URL in browser: http://localhost:81
 
 #### Web API:
 ```bash
@@ -42,7 +42,7 @@ Build and run the test container.
 ```bash
 cd ../../examples/Docker/PlayWright.Specs/
 docker build . -t webcalculator.specs:latest
-docker run -it --name webcalculator.specs --network calcnet -v.://src/WebCalculator.Specs/bin/Debug/net10.0/report --rm webcalculator.specs:latest
+docker run -it --rm --name webcalculator.specs --network calcnet -v.://src/WebCalculator.Specs/bin/Debug/net10.0/report --rm webcalculator.specs:latest
 ```
 
 Execute the tests in the test container. `xunit.v3` creates an executable.
@@ -68,7 +68,7 @@ Build and run the test container.
 ```bash
 cd ../HttpClient.Specs/
 docker build . -t webcalculatorapi.specs:latest
-docker run -it --name webcalculatorapi.specs --network calcnet -v.://src/WebCalculatorApi.Specs/bin/Debug/net10.0/report --rm webcalculatorapi.specs:latest
+docker run -it --rm --name webcalculatorapi.specs --network calcnet -v.://src/WebCalculatorApi.Specs/bin/Debug/net10.0/report --rm webcalculatorapi.specs:latest
 ```
 
 Execute the tests in the test container. `xunit.v3` creates an executable.
