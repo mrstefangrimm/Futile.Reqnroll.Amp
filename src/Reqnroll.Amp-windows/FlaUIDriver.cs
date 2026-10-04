@@ -46,16 +46,7 @@ public class FlaUIDriverBase : AmpDriver<Window>, IDisposable
             _ => throw new InvalidOperationException($"Invalid FlaUI Automation {flaUi.Settings.UIA}."),
         };
 
-        var profiles = flaUi.Profiles;
-        if (profiles == null || !profiles.Any()) { throw new InvalidOperationException("No FlaUI profile defined."); }
-
-        if (_launchProfileName == null)
-        {
-            _launchProfileName = profiles.First().Key;
-            if (_launchProfileName == null || string.IsNullOrEmpty(_launchProfileName)) { throw new InvalidOperationException($"Invalid FlaUI profile name {_launchProfileName}."); }
-        }
-
-        var profile = profiles[_launchProfileName];
+        var profile = GetLaunchProfile(flaUi.Profiles, _launchProfileName);
         if (profile == null) { throw new InvalidOperationException($"Invalid profile with name {_launchProfileName}."); }
 
         if (profile.Launch == LaunchCommand.Exe)

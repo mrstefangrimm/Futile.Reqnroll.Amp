@@ -38,4 +38,16 @@ public abstract class AmpDriver<T>
     }
 
     protected abstract T LaunchProfile();
+
+    protected static TSettingsProfile GetLaunchProfile<TSettingsProfile>(IDictionary<string, TSettingsProfile>? profiles, string? profileName)
+    {
+        if (profiles == null || !profiles.Any()) { throw new InvalidOperationException("No profile defined in reqnroll.ampsettings.json."); }
+        if (profileName == null)
+        {
+            profileName = profiles.Keys.FirstOrDefault();
+            if (profileName == null || string.IsNullOrEmpty(profileName)) { throw new InvalidOperationException($"Invalid profile name {profileName}."); }
+        }
+
+        return profiles[profileName];
+    }
 }
