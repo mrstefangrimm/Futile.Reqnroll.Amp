@@ -2,7 +2,11 @@
   "baseBranchPatterns": ["prerelease/0.1.2"],
   "packageRules": [
     {
-      "matchPackageNames": ["Futile.Reqnroll.Amp", "Futile.Reqnroll.Amp-windows"],
+      "matchPackageNames": [
+        "Futile.Reqnroll.Amp",
+        "Futile.Reqnroll.Amp-windows"
+      ],
+      "groupName": "Futile Reqnroll packages",
       "ignoreUnstable": false
     }
   ]
