@@ -8,6 +8,7 @@
       ],
       "groupName": "Futile Reqnroll.Amp packages",
       "ignoreUnstable": false,
+      "dependencyDashboardApproval": false,
       "automerge": true
     },
     {
