@@ -6,8 +6,9 @@
         "Futile.Reqnroll.Amp",
         "Futile.Reqnroll.Amp-windows"
       ],
-      "groupName": "Futile Reqnroll packages",
-      "ignoreUnstable": false
+      "groupName": "Futile Reqnroll.Amp packages",
+      "ignoreUnstable": false,
+      "automerge": true
     }
   ]
 }
