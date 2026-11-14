@@ -9,6 +9,14 @@
       "groupName": "Futile Reqnroll.Amp packages",
       "ignoreUnstable": false,
       "automerge": true
+    },
+    {
+      "matchPackageNames": ["/^Microsoft\\.Extensions\\./"],
+      "groupName": "Microsoft.Extensions"
+    },
+    {
+      "matchPackageNames": ["/^Microsoft\\.AspNetCore\\./"],
+      "groupName": "Microsoft.AspNetCore"
     }
   ]
 }
