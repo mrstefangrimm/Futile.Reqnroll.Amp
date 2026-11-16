@@ -7,16 +7,17 @@
         <OutputType>Exe</OutputType>
         <IsPackable>false</IsPackable>
         <GenerateErrorForMissingTargetingPacks>false</GenerateErrorForMissingTargetingPacks>
+		<TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="FluentAssertions" Version="6.12.2" />
-        <PackageReference Include="Futile.Reqnroll.Amp-windows" Version="0.1.1" />
+        <PackageReference Include="Futile.Reqnroll.Amp-windows" Version="0.1.2-prerelease.17" />
         <PackageReference Include="Reqnroll" Version="3.3.4" />
         <PackageReference Include="Reqnroll.Autofac" Version="3.3.4" />
         <PackageReference Include="Reqnroll.Tools.MsBuild.Generation" Version="3.3.4" />
         <PackageReference Include="Reqnroll.xunit.v3" Version="3.3.4" />
-        <PackageReference Include="xunit.v3" Version="3.2.2" />
+        <PackageReference Include="xunit.v3" Version="4.0.3" />
     </ItemGroup>
 
     <ItemGroup>

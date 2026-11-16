@@ -52,3 +52,17 @@ To execute the tests, just execute:
 .\published\CalculatorComparison.Specs.exe
 ```
 
+xUnit has built-in results formats, use --help to get the list:
+
+```shell
+.\published\CalculatorComparison.Specs.exe --help
+
+# Use junit
+.\published\CalculatorComparison.Specs.exe -junit output.junit
+```
+
+Instead of using `dotnet publish` and executing the executable, it is possible to used dotnet test:
+
+```shell
+dotnet test -- --report-junit
+```

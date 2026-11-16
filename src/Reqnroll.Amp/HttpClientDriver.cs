@@ -44,17 +44,7 @@ public class HttpClientDriverBase : AmpDriver<HttpClient>, IDisposable
         }
 
         var apiSettings = _appSettings.Value.WebApi;
-
-        var profiles = apiSettings.Profiles;
-        if (profiles == null || !profiles.Any()) { throw new InvalidOperationException("No FlaUI profile defined."); }
-
-        if (_launchProfileName == null)
-        {
-            _launchProfileName = profiles.First().Key;
-            if (_launchProfileName == null || string.IsNullOrEmpty(_launchProfileName)) { throw new InvalidOperationException($"Invalid FlaUI profile name {_launchProfileName}."); }
-        }
-
-        var profile = profiles[_launchProfileName];
+        var profile = GetLaunchProfile(apiSettings.Profiles, _launchProfileName);
         if (profile == null) { throw new InvalidOperationException($"Invalid profile with name {_launchProfileName}."); }
 
         _instance = new HttpClient
