@@ -23,8 +23,6 @@ jobs:
         dotnet-version: 10.0.x
     - name: Set VERSION variable from last release tag     
       run: |
-        LIST=$(git tag --list 'v*')
-        echo "list $LIST"
         LAST_TAG=$(git tag --list 'v*' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1)
         #LAST_TAG=${LAST_TAG:-v0.0.0}
         BASE=${LAST_TAG#v}
@@ -32,7 +30,7 @@ jobs:
         NEXT="$MAJOR.$MINOR.$((PATCH + 1))"
         VERSION=${NEXT}-prerelease.${GITHUB_RUN_NUMBER}
         echo "$LAST_TAG $BASE  $MAJOR $MINOR $PATCH  $NEXT  $VERSION"
-        # echo "$VERSION"
+        echo "$VERSION" >> "$GITHUB_ENV"
         # echo "VERSION=${NEXT}-prerelease.${GITHUB_RUN_NUMBER}" >> "$GITHUB_ENV"
         # echo "Last release tag: ${LAST_TAG}, building pre-release ${NEXT}-prerelease.${GITHUB_RUN_NUMBER}"
     - name: Pack Reqnroll.Amp
