@@ -1,11 +1,15 @@
 name: Pack Prerelease
 
 on:
+  workflow_run:
+    workflows: ["CI"]
+    types:
+      - completed
   push:
     paths:
     - "src/**"
     - ".github/workflows/prerelease-nuget.yml"
-    branches: [ "prerelease/[0-9]+.[0-9]+.[0-9]+" ]
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
@@ -15,14 +19,15 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v7
+      with:
+        fetch-depth: 0
     - name: Setup .NET
       uses: actions/setup-dotnet@v6
       with:
         dotnet-version: 10.0.x
-    - name: Set VERSION variable from last release tag
+    - name: Set VERSION variable from last release tag     
       run: |
         LAST_TAG=$(git tag --list 'v*' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1)
-        #LAST_TAG=${LAST_TAG:-v0.0.0}
         BASE=${LAST_TAG#v}
         IFS=. read -r MAJOR MINOR PATCH <<< "$BASE"
         NEXT="$MAJOR.$MINOR.$((PATCH + 1))"
@@ -36,7 +41,7 @@ jobs:
       run: |
         dotnet restore src/Reqnroll.Amp-windows/Reqnroll.Amp-windows.csproj
         dotnet pack --configuration Release src/Reqnroll.Amp-windows/Reqnroll.Amp-windows.csproj -p:Version=${VERSION} --output .
-    # - name: Push Reqnroll.Amp
-      # run: dotnet nuget push Futile.Reqnroll.Amp.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.PUSH_NUGET }}
+    - name: Push Reqnroll.Amp
+      run: dotnet nuget push Futile.Reqnroll.Amp.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.PUSH_NUGET }}
     # - name: Push Reqnroll.Amp-windows
       # run: dotnet nuget push Futile.Reqnroll.Amp-windows.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.PUSH_NUGET }}
