@@ -4,9 +4,10 @@ using Reqnroll.Autofac;
 using WpfCalculator.Specs.App;
 using WpfCalculator.Specs.Services;
 using WpfCalculator.Specs.Steps;
-using Xunit;
+using Xunit.Sdk;
+using Xunit.v3;
 
-[assembly: CollectionBehavior(DisableTestParallelization = true)]
+[assembly: Parallelization(Mode = ParallelMode.None)]
 
 namespace WpfCalculator.Specs;
 
