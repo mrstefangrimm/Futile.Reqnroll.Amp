@@ -7,6 +7,7 @@
         <OutputType>Exe</OutputType>
         <IsPackable>false</IsPackable>
         <GenerateErrorForMissingTargetingPacks>false</GenerateErrorForMissingTargetingPacks>
+		<TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
     </PropertyGroup>
 
     <ItemGroup>
