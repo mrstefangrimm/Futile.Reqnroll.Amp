@@ -44,5 +44,5 @@ jobs:
         dotnet pack --configuration Release src/Reqnroll.Amp-windows/Reqnroll.Amp-windows.csproj -p:Version=${VERSION} --output .
     - name: Push Reqnroll.Amp
       run: dotnet nuget push Futile.Reqnroll.Amp.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.PUSH_NUGET }}
-    # - name: Push Reqnroll.Amp-windows
-      # run: dotnet nuget push Futile.Reqnroll.Amp-windows.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.PUSH_NUGET }}
+    - name: Push Reqnroll.Amp-windows
+      run: dotnet nuget push Futile.Reqnroll.Amp-windows.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.PUSH_NUGET }}
