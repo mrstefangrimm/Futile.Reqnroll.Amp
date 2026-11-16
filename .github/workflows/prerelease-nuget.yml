@@ -5,7 +5,7 @@ on:
     paths:
     - "src/**"
     - ".github/workflows/prerelease-nuget.yml"
-    branches: [ "prerelease/[0-9]+.[0-9]+.[0-9]+" ]
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
@@ -24,13 +24,9 @@ jobs:
     - name: Set VERSION variable from last release tag     
       run: |
         LAST_TAG=$(git tag --list 'v*' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1)
-        #LAST_TAG=${LAST_TAG:-v0.0.0}
         BASE=${LAST_TAG#v}
         IFS=. read -r MAJOR MINOR PATCH <<< "$BASE"
         NEXT="$MAJOR.$MINOR.$((PATCH + 1))"
-        # VERSION=${NEXT}-prerelease.${GITHUB_RUN_NUMBER}
-        # echo "$LAST_TAG $BASE  $MAJOR $MINOR $PATCH  $NEXT  $VERSION"
-        # echo "$VERSION" >> "$GITHUB_ENV"
         echo "VERSION=${NEXT}-prerelease.${GITHUB_RUN_NUMBER}" >> "$GITHUB_ENV"
         echo "Last release tag: ${LAST_TAG}, building pre-release ${NEXT}-prerelease.${GITHUB_RUN_NUMBER}"
     - name: Pack Reqnroll.Amp
@@ -41,7 +37,7 @@ jobs:
       run: |
         dotnet restore src/Reqnroll.Amp-windows/Reqnroll.Amp-windows.csproj
         dotnet pack --configuration Release src/Reqnroll.Amp-windows/Reqnroll.Amp-windows.csproj -p:Version=${VERSION} --output .
-    # - name: Push Reqnroll.Amp
-      # run: dotnet nuget push Futile.Reqnroll.Amp.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.PUSH_NUGET }}
+    - name: Push Reqnroll.Amp
+      run: dotnet nuget push Futile.Reqnroll.Amp.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.PUSH_NUGET }}
     # - name: Push Reqnroll.Amp-windows
       # run: dotnet nuget push Futile.Reqnroll.Amp-windows.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.PUSH_NUGET }}
