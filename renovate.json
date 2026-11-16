@@ -1,0 +1,23 @@
+{
+  "baseBranchPatterns": ["prerelease/0.1.2"],
+  "packageRules": [
+    {
+      "matchPackageNames": [
+        "Futile.Reqnroll.Amp",
+        "Futile.Reqnroll.Amp-windows"
+      ],
+      "groupName": "Futile Reqnroll.Amp packages",
+      "ignoreUnstable": false,
+      "dependencyDashboardApproval": false,
+      "automerge": true
+    },
+    {
+      "matchPackageNames": ["/^Microsoft\\.Extensions\\./"],
+      "groupName": "Microsoft.Extensions"
+    },
+    {
+      "matchPackageNames": ["/^Microsoft\\.AspNetCore\\./"],
+      "groupName": "Microsoft.AspNetCore"
+    }
+  ]
+}
