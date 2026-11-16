@@ -1,5 +1,4 @@
 {
-  "baseBranchPatterns": ["prerelease/0.1.2"],
   "packageRules": [
     {
       "matchPackageNames": [
