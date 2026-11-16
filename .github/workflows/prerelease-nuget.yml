@@ -26,8 +26,11 @@ jobs:
         BASE=${LAST_TAG#v}
         IFS=. read -r MAJOR MINOR PATCH <<< "$BASE"
         NEXT="$MAJOR.$MINOR.$((PATCH + 1))"
-        echo "VERSION=${NEXT}-prerelease.${GITHUB_RUN_NUMBER}" >> "$GITHUB_ENV"
-        echo "Last release tag: ${LAST_TAG}, building pre-release ${NEXT}-prerelease.${GITHUB_RUN_NUMBER}"
+        VERSION=${NEXT}-prerelease.${GITHUB_RUN_NUMBER}"
+        echo "${LAST_TAG} ${BASE}  $MAJOR $MINOR $PATCH  $NEXT  $VERSION"
+        # echo "$VERSION"
+        # echo "VERSION=${NEXT}-prerelease.${GITHUB_RUN_NUMBER}" >> "$GITHUB_ENV"
+        # echo "Last release tag: ${LAST_TAG}, building pre-release ${NEXT}-prerelease.${GITHUB_RUN_NUMBER}"
     - name: Pack Reqnroll.Amp
       run: |
         dotnet restore src/Reqnroll.Amp/Reqnroll.Amp.csproj
