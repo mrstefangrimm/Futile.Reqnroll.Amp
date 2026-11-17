@@ -6,8 +6,6 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <OutputType>Exe</OutputType>
         <IsPackable>false</IsPackable>
-        <GenerateErrorForMissingTargetingPacks>false</GenerateErrorForMissingTargetingPacks>
-        <IsTestProject>true</IsTestProject>
     </PropertyGroup>
 
     <ItemGroup>
