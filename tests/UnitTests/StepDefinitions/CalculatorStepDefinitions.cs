@@ -6,8 +6,8 @@ namespace UnitTests.StepDefinitions
     [Binding]
     public sealed partial class CalculatorStepDefinitions
     {
-        private Dictionary<string, WebApiProfile> _webApiProfiles;
-        private WebApiProfile _webApiProfile;
+        private Dictionary<string, WebApiProfile>? _webApiProfiles;
+        private WebApiProfile? _webApiProfile;
 
         [Given("WebApi profile is defined in reqnroll.ampsettings.json")]
         public void GivenWebApiProfileIsDefinedInReqnroll_Ampsettings_Json()
@@ -27,7 +27,7 @@ namespace UnitTests.StepDefinitions
         [Then("the profile should be selected")]
         public void ThenTheProfileShouldBeSelected()
         {
-            Assert.Equal("https://localhost:5001", _webApiProfile.Url);
+            Assert.Equal("https://localhost:5001", _webApiProfile?.Url);
         }
 
     }
