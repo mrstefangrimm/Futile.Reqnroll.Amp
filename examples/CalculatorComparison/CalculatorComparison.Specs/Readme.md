@@ -38,7 +38,7 @@ Ignore the projects *WebCalculator.Specs* and *WebCalculatorApi.Specs* in the so
 
 ## Run on the command line
 
-Open a command line and execute:
+Open a command line and execute in the parent folder (`cd .. `):
 
 ```sh
  dotnet publish .\CalculatorComparison.Specs\ -c Release -o published
@@ -57,12 +57,17 @@ xUnit has built-in results formats, use --help to get the list:
 ```shell
 .\published\CalculatorComparison.Specs.exe --help
 
-# Use junit
+# Use junit report
 .\published\CalculatorComparison.Specs.exe -junit output.junit
 ```
 
 Instead of using `dotnet publish` and executing the executable, it is possible to used dotnet test:
 
 ```shell
-dotnet test -- --report-junit
+dotnet test --project .\CalculatorComparison.Specs.csproj
+
+# Get options
+dotnet test --project .\CalculatorComparison.Specs.csproj --help
+# Use junit report
+dotnet test --project .\CalculatorComparison.Specs.csproj --report-xunit-junit
 ```
