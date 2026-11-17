@@ -7,7 +7,8 @@
         <OutputType>Exe</OutputType>
         <IsPackable>false</IsPackable>
         <GenerateErrorForMissingTargetingPacks>false</GenerateErrorForMissingTargetingPacks>
-		<TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+        <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+        <IsTestProject>true</IsTestProject>
     </PropertyGroup>
 
     <ItemGroup>
@@ -32,7 +33,7 @@
     <ItemGroup>
         <WpfCalculatorFiles Include="$(ProjectDir)..\WpfCalculator\**\*" />
     </ItemGroup>
-    
+
     <Target Name="CopyWpfCalculatorOnBuild" AfterTargets="Build">
         <Copy SourceFiles="@(WpfCalculatorFiles)" DestinationFolder="$(OutDir)WpfCalculator\%(RecursiveDir)" SkipUnchangedFiles="true" />
     </Target>
