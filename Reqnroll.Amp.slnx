@@ -18,6 +18,9 @@
     <Project Path="src/Reqnroll.Amp-windows/Reqnroll.Amp-windows.csproj" />
   </Folder>
   <Folder Name="/tests/" />
+  <Folder Name="/tests/UnitTests/">
+    <Project Path="tests/UnitTests/UnitTests.csproj" />
+  </Folder>
   <Folder Name="/tests/Specs/">
     <Project Path="tests/FlaUI.Specs/WpfCalculator.Specs/WpfCalculator.Specs.csproj" />
     <Project Path="tests/FlaUI.Specs/Wpf2Calculators.Specs/Wpf2Calculators.Specs.csproj" />
