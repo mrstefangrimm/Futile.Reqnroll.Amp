@@ -2,7 +2,7 @@
   "playwright": {
     "profiles": {
       "Futile Calculator headless": {
-        "url": "http://webcalculator:80/",
+        "url": "http://webcalculator:8080/",
         "headless": true
       }
     }
