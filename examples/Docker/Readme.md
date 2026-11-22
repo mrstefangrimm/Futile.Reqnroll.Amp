@@ -16,9 +16,9 @@ Manual build and create the test containers.
 # Create a network for both SUTs and Tests
 docker network create calcnet
 
-cd tests/WebCalculator/
+cd ../../tests/WebCalculator/
 docker build . -t webcalculator:latest
-docker run -d --name webcalculator --network calcnet -p 81:80 webcalculator:latest
+docker run -d --name webcalculator --network calcnet -p 8081:8080 webcalculator:latest
 
 cd ../WebCalculatorApi/
 docker build . -t webcalculatorapi:latest
@@ -28,7 +28,7 @@ docker run -d --name webcalculatorapi --network calcnet -p 8080:8080 webcalculat
 ### Test the SUT
 
 #### Web UI:
-URL in browser: http://localhost:81
+URL in browser: [http://localhost:8081](http://localhost:8081)
 
 #### Web API:
 ```bash
@@ -95,5 +95,6 @@ docker rmi -f webcalculator.specs
 docker rmi -f webcalculatorapi
 docker rmi -f webcalculator
 docker network rm calcnet
+docker system prune -f
 ```
 
