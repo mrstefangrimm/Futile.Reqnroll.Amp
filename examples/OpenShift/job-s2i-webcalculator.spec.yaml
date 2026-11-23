@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: webcalculator-spec-config
+  namespace: futile-tests
+data:
+  reqnroll.ampsettings.json: |
+    {
+      "playwright": {
+        "profiles": {
+          "Futile Calculator headless": {
+            "url": "http://service-s2i-webcalculator",
+            "headless": true
+          }
+        }
+      }
+    }
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: webcalculator-specs
+  namespace: futile-tests
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: specs
+          image: image-registry.openshift-image-registry.svc:5000/futile-tests/s2i-webcalculator-spec
+          imagePullPolicy: Always
+          workingDir: /src
+          command: ["/bin/bash", "-lc"]
+          args:
+            - ./WebCalculator.Specs/bin/Debug/net10.0/WebCalculator.Specs
+          volumeMounts:
+            - name: reqnroll-settings
+              mountPath: /src/WebCalculator.Specs/bin/Debug/net10.0/reqnroll.ampsettings.json
+              subPath: reqnroll.ampsettings.json
+              readOnly: true
+      volumes:
+        - name: reqnroll-settings
+          configMap:
+            name: webcalculator-spec-config

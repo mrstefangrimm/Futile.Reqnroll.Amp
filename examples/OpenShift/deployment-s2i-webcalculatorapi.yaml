@@ -1,0 +1,59 @@
+﻿kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: s2i-webcalculatorapi
+  namespace: futile-tests
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: s2i-webcalculatorapi
+  template:
+    metadata:
+      labels:
+        app: s2i-webcalculatorapi
+    spec:
+      containers:
+        - name: container
+          image: 'image-registry.openshift-image-registry.svc:5000/futile-tests/s2i-webcalculatorapi'
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          imagePullPolicy: Always
+      restartPolicy: Always
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: service-s2i-webcalculatorapi
+  namespace: futile-tests
+spec:
+  ipFamilies:
+    - IPv4
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  internalTrafficPolicy: Cluster
+  type: ClusterIP
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
+  selector:
+    app: s2i-webcalculatorapi
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: route-s2i-webcalculatorapi
+  namespace: futile-tests
+  annotations:
+    openshift.io/host.generated: 'true'
+spec:
+  host: route-s2i-webcalculatorapi.apps-crc.testing
+  to:
+    kind: Service
+    name: service-s2i-webcalculatorapi
+    weight: 100
+  port:
+    targetPort: 8080
+  wildcardPolicy: None
