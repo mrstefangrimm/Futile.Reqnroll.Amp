@@ -1,7 +1,7 @@
-ARG PLAYWRIGHT_VERSION=1.63.0
+ARG PLAYWRIGHT_VERSION=v1.64.1-noble
 
 # Stage 1: Build stage
-FROM playwrightsdkbase:${PLAYWRIGHT_VERSION} AS build
+FROM mcr.microsoft.com/playwright/dotnet:${PLAYWRIGHT_VERSION} AS build
 
 WORKDIR /app
 
