@@ -12,7 +12,7 @@ RUN dotnet restore && \
 
 
 # Stage 2: Runtime stage
-FROM playwrightruntimebase:${PLAYWRIGHT_VERSION}
+FROM mcr.microsoft.com/playwright/dotnet:${PLAYWRIGHT_VERSION}
 
 WORKDIR /app
 
