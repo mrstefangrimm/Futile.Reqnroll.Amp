@@ -1,4 +1,4 @@
-ARG PLAYWRIGHT_VERSION=v1.64.1-noble
+ARG PLAYWRIGHT_VERSION=v1.65.1-noble
 
 # Stage 1: Build stage
 FROM mcr.microsoft.com/playwright/dotnet:${PLAYWRIGHT_VERSION} AS build
