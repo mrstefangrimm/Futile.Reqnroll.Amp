@@ -31,10 +31,10 @@ jobs:
       run: |
         dotnet restore src/Reqnroll.Amp-windows/Reqnroll.Amp-windows.csproj
         dotnet pack --configuration Release src/Reqnroll.Amp-windows/Reqnroll.Amp-windows.csproj -p:Version=${VERSION} --output .
-    #- name: Push API
-    #  run: dotnet nuget push Futile.Reqnroll.Amp.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.PUSH_NUGET }}
-    #- name: Push APP
-    #  run: dotnet nuget push Futile.Reqnroll.Amp-windows.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.PUSH_NUGET }}
+    - name: Push API
+      run: dotnet nuget push Futile.Reqnroll.Amp.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.PUSH_NUGET }}
+    - name: Push APP
+      run: dotnet nuget push Futile.Reqnroll.Amp-windows.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.PUSH_NUGET }}
     - name: Create Git Tag
       run: |
         echo "${VERSION}"
