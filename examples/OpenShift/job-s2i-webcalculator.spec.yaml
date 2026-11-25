@@ -30,13 +30,13 @@ spec:
         - name: specs
           image: image-registry.openshift-image-registry.svc:5000/futile-tests/s2i-webcalculator-spec
           imagePullPolicy: Always
-          workingDir: /src
+          workingDir: /app
           command: ["/bin/bash", "-lc"]
           args:
-            - ./WebCalculator.Specs/bin/Debug/net10.0/WebCalculator.Specs
+            - ./net10.0/WebCalculator.Specs
           volumeMounts:
             - name: reqnroll-settings
-              mountPath: /src/WebCalculator.Specs/bin/Debug/net10.0/reqnroll.ampsettings.json
+              mountPath: /app/net10.0/reqnroll.ampsettings.json
               subPath: reqnroll.ampsettings.json
               readOnly: true
       volumes:

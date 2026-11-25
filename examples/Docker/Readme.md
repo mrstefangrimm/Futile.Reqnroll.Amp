@@ -1,6 +1,6 @@
 # Docker
 
-Tests the results of various calculator implementations in a docker containers. A Web UIs and a Web API are tested. Both tests and systems under test are docker containers. This is possible because Futile.Reqnroll.Amp does not require Windows.
+Demonstrates how to tests various calculator implementations in a docker container. A calculator with Web UI and a calculator with a Web API are tested. Test and system under test (SUT) are docker containers. This is possible because Futile.Reqnroll.Amp does not require Windows.
 
 Requires:
  - Docker
@@ -25,7 +25,7 @@ docker build . -t webcalculatorapi:latest
 docker run -d --name webcalculatorapi --network calcnet -p 8080:8080 webcalculatorapi:latest
 ```
 
-### Test the SUT
+### 2 Test the SUT
 
 #### Web UI:
 URL in browser: [http://localhost:8081](http://localhost:8081)
@@ -35,7 +35,7 @@ URL in browser: [http://localhost:8081](http://localhost:8081)
 curl -X POST http://localhost:8080/api/calculation -H "Content-Type: application/json" -d '{ "firstNumber": 1, "secondNumber": 2, "mathOperation": "Add" }'
 ```
 
-### 2 Build, Run the WebCalculator Test container and Execute the Tests
+### 3 Build, Run the WebCalculator Test container and Execute the Tests
 
 Build and run the test container.
 
@@ -48,7 +48,7 @@ docker run -it --rm --name webcalculator.specs --network calcnet -v.://src/WebCa
 Execute the tests in the test container. `xunit.v3` creates an executable.
 
 ```bash
-./bin/Debug/net10.0/WebCalculator.Specs
+./net10.0/WebCalculator.Specs
 ```
 
 Exit and terminate the docker container.
@@ -61,7 +61,7 @@ The test report is available as html in the current Windows directory. You may w
 
 
 
-### 3 Build, Run the WebAPI Test container and Execute the Tests
+### 4 Build, Run the WebAPI Test container and Execute the Tests
 
 Build and run the test container.
 
@@ -74,7 +74,7 @@ docker run -it --rm --name webcalculatorapi.specs --network calcnet -v.://src/We
 Execute the tests in the test container. `xunit.v3` creates an executable.
 
 ```bash
-./bin/Debug/net10.0/WebCalculatorApi.Specs
+./net10.0/WebCalculatorApi.Specs
 ```
 
 Exit and terminate the docker container.
@@ -85,7 +85,7 @@ exit
 
 The test report is available as html in the current Windows directory. You may want to delete the file *reqnroll_report.html* after reviewing it.
 
-### 4 Clean-up
+### 5 Clean up
 
 ```bash
 docker rm -f webcalculatorapi

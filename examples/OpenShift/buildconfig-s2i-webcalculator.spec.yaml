@@ -18,6 +18,6 @@ spec:
     type: Git
     git:
       uri: 'https://github.com/mrstefangrimm/Futile.Reqnroll.Amp'
-      ref: main
+      ref: update_docker_example2
     contextDir: examples/Docker/PlayWright.Specs
   runPolicy: Serial
