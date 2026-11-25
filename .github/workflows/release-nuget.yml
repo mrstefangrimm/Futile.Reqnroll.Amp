@@ -35,6 +35,6 @@ jobs:
     - name: Create Git Tag
       run: |
         echo "${VERSION}"
-        git tag Nuget_${VERSION}
+        git tag v${VERSION}
     - name: Push Git Tag
-      run: git push origin Nuget_${VERSION}   
+      run: git push origin v${VERSION}   

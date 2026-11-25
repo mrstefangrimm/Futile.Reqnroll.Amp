@@ -1,13 +1,21 @@
-# Build stage
-FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+ARG DOTNET_VERSION=10.0
+
+# Build
+FROM mcr.microsoft.com/dotnet/sdk:${DOTNET_VERSION} AS build
+
 WORKDIR /src
 
-COPY WebCalculatorApi.Specs/*.csproj ./WebCalculatorApi.Specs/
-RUN dotnet restore WebCalculatorApi.Specs/WebCalculatorApi.Specs.csproj
+COPY WebCalculatorApi.Specs/ ./
 
-COPY . .
+RUN dotnet restore && \
+    dotnet build --configuration Release --no-restore
 
-WORKDIR /src/WebCalculatorApi.Specs
-RUN dotnet build
+# Stage 2: Run
+FROM mcr.microsoft.com/dotnet/runtime:${DOTNET_VERSION}
+
+WORKDIR /app
+
+# Copy built artifacts from the build stage
+COPY --from=build /src/bin/Release/ ./
 
 ENTRYPOINT ["bash"]
